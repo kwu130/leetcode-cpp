@@ -5,4 +5,4 @@ repos:
         name: clang-format
         entry: clang-format -i
         language: system
-        types: [c, c++]
+        files: \.(cpp|cc|c|cxx|h|hpp|hxx)$
