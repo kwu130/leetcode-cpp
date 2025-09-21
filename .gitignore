@@ -1,0 +1,39 @@
+# Build folders
+/build/
+/CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Executables
+*.out
+*.exe
+*.obj
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+
+# IDE / Editor settings
+.idea/
+.cache/
+.vscode/
+cmake-build-*/
+*.db
+*.ipch
+*.filters
+*.db-wal
+*.opendb
+*.db-shm
+*.vcxproj
+*.tcl
+*.user
+*.sln
+
+# OS files
+*.DS_store
+*.xcodeproj/
+/.vs
+/out/build
+/CMakeSettings.json
