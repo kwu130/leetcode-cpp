@@ -2,7 +2,7 @@
 Language:        Cpp
 BasedOnStyle:  Google
 AccessModifierOffset: -4
-Standard:        c++17
+Standard:        c++20
 IndentWidth:     4
 TabWidth:        4
 UseTab:          Never
@@ -15,4 +15,15 @@ PackConstructorInitializers: Never
 BreakConstructorInitializersBeforeComma: false
 IndentPPDirectives: BeforeHash
 SortIncludes:    Never
+PointerAlignment: Left
+BreakBeforeBraces: Attach
+SpaceAfterCStyleCast: true
+SpacesInParentheses:  false
+SpacesBeforeTrailingComments: 2
+ReflowComments: IndentOnly
+MaxEmptyLinesToKeep: 2
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: false
+  AtStartOfFile: false
 ...
