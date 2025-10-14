@@ -52,4 +52,18 @@ void freeList(ListNode* head) {
 }
 }  // namespace listHelper
 
+namespace compareHelper {
+template <typename T>
+bool equalIgnoreOrder(std::vector<std::vector<T>> a, std::vector<std::vector<T>> b) {
+    if (a.size() != b.size()) return false;
+
+    for (auto& v : a) std::sort(v.begin(), v.end());
+    for (auto& v : b) std::sort(v.begin(), v.end());
+
+    std::sort(a.begin(), a.end());
+    std::sort(b.begin(), b.end());
+
+    return a == b;
+}
+}  // namespace compareHelper
 #endif  // LEETCODE_COMMON_H
