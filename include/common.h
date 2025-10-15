@@ -16,34 +16,41 @@ struct ListNode {
     ListNode(int x, ListNode* next)
         : val(x),
           next(next) {}
-    ListNode(const std::vector<int>& vec)
-        : next(nullptr) {
-        assert(!vec.empty());
-        val = vec[0];
-        ListNode* cur = this;
-        for (int i = 1; i < vec.size(); i++) {
-            cur->next = new ListNode(vec[i]);
-            cur = cur->next;
-        }
-    }
-
-    bool equal(const ListNode* other) const {
-        const ListNode* current_this = this;
-        const ListNode* current_other = other;
-
-        while (current_this != nullptr && current_other != nullptr) {
-            if (current_this->val != current_other->val) {
-                return false;
-            }
-            current_this = current_this->next;
-            current_other = current_other->next;
-        }
-
-        return current_this == nullptr && current_other == nullptr;
-    }
 };
 
-void freeList(ListNode* head) {
+ListNode* build(const std::vector<int>& vec) {
+    if (vec.empty()) return nullptr;
+    ListNode* head = new ListNode(vec[0]);
+    ListNode* cur = head;
+    for (int i = 1; i < vec.size(); i++) {
+        cur->next = new ListNode(vec[i]);
+        cur = cur->next;
+    }
+
+    return head;
+}
+
+bool equal(const ListNode* lhs, const ListNode* rhs) {
+    while (lhs != nullptr && rhs != nullptr) {
+        if (lhs->val != rhs->val) {
+            return false;
+        }
+        lhs = lhs->next;
+        rhs = rhs->next;
+    }
+
+    return lhs == nullptr && rhs == nullptr;
+}
+
+void print(const ListNode* head) {
+    while (head != nullptr) {
+        std::cout << head->val << " -> ";
+        head = head->next;
+    }
+    std::cout << "nullptr" << std::endl;
+}
+
+void free(ListNode* head) {
     while (head != nullptr) {
         ListNode* tmp = head;
         head = head->next;
@@ -51,6 +58,7 @@ void freeList(ListNode* head) {
     }
 }
 }  // namespace listHelper
+
 
 namespace compareHelper {
 template <typename T>

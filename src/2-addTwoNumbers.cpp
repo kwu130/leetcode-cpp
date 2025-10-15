@@ -6,7 +6,7 @@
 #include "../include/common.h"
 
 using namespace std;
-using namespace listHelper;
+using listHelper::ListNode;
 
 class Solution {
 public:
@@ -30,32 +30,36 @@ public:
 
 void test() {
     Solution s;
-    ListNode* l1 = new ListNode(vector<int>{2, 4, 3});
-    ListNode* l2 = new ListNode(vector<int>{5, 6, 4});
-    ListNode* expected = new ListNode(vector<int>{7, 0, 8});
+    ListNode* l1 = listHelper::build({2, 4, 3});
+    ListNode* l2 = listHelper::build({5, 6, 4});
+    ListNode* expected = listHelper::build({7, 0, 8});
     ListNode* res = s.addTwoNumbers(l1, l2);
-    assert(res->equal(expected));
-    freeList(l1);
-    freeList(l2);
-    freeList(expected);
 
-    l1 = new ListNode(vector<int>{0});
-    l2 = new ListNode(vector<int>{0});
-    expected = new ListNode(vector<int>{0});
-    res = s.addTwoNumbers(l1, l2);
-    assert(res->equal(expected));
-    freeList(l1);
-    freeList(l2);
-    freeList(expected);
+    assert(listHelper::equal(res, expected));
+    listHelper::free(l1);
+    listHelper::free(l2);
+    listHelper::free(res);
+    listHelper::free(expected);
 
-    l1 = new ListNode(vector<int>{9, 9, 9, 9, 9, 9, 9});
-    l2 = new ListNode(vector<int>{9, 9, 9, 9});
-    expected = new ListNode(vector<int>{8, 9, 9, 9, 0, 0, 0, 1});
+    l1 = listHelper::build({0});
+    l2 = listHelper::build({0});
+    expected = listHelper::build({0});
     res = s.addTwoNumbers(l1, l2);
-    assert(res->equal(expected));
-    freeList(l1);
-    freeList(l2);
-    freeList(expected);
+    assert(listHelper::equal(res, expected));
+    listHelper::free(l1);
+    listHelper::free(l2);
+    listHelper::free(res);
+    listHelper::free(expected);
+
+    l1 = listHelper::build({9, 9, 9, 9, 9, 9, 9});
+    l2 = listHelper::build({9, 9, 9, 9});
+    expected = listHelper::build({8, 9, 9, 9, 0, 0, 0, 1});
+    res = s.addTwoNumbers(l1, l2);
+    assert(listHelper::equal(res, expected));
+    listHelper::free(l1);
+    listHelper::free(l2);
+    listHelper::free(res);
+    listHelper::free(expected);
 }
 
 int main() {
