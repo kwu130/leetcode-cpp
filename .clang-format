@@ -8,6 +8,7 @@ TabWidth:        4
 UseTab:          Never
 ColumnLimit:     120
 AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Right
 BinPackParameters: false
 AlignEscapedNewlines: Left
 AlwaysBreakTemplateDeclarations: Yes
