@@ -24,6 +24,7 @@ void test() {
     Solution s;
     vector<string> strs = {"flower", "flow", "flight"};
     assert(s.longestCommonPrefix(strs) == "fl");
+
     strs = {"dog", "racecar", "car"};
     assert(s.longestCommonPrefix(strs) == "");
 }

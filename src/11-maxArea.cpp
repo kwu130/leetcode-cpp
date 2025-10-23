@@ -28,6 +28,7 @@ void test() {
     Solution s;
     vector<int> height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
     assert(s.maxArea(height) == 49);
+
     height = {1, 1};
     assert(s.maxArea(height) == 1);
 }

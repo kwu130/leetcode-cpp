@@ -38,11 +38,14 @@ void test() {
     string digits = "23";
     vector<string> expected = {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"};
     assert(s.letterCombinations(digits) == expected);
+
     digits = "";
     expected = {};
     assert(s.letterCombinations(digits) == expected);
+
     digits = "2";
     expected = {"a", "b", "c"};
+    assert(s.letterCombinations(digits) == expected);
 }
 
 int main() {

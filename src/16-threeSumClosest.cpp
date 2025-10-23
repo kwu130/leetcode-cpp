@@ -40,6 +40,7 @@ void test() {
     Solution s;
     vector<int> nums = {-1, 2, 1, -4};
     assert(s.threeSumClosest(nums, 1) == 2);
+
     nums = {0, 0, 0};
     assert(s.threeSumClosest(nums, 1) == 0);
 }

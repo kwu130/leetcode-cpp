@@ -43,13 +43,19 @@ public:
 void test() {
     Solution s;
     vector<int> nums = {-1, 0, 1, 2, -1, -4};
-    vector<vector<int>> expected = {{{-1, -1, 2}, {-1, 0, 1}}};
+    vector<vector<int>> expected = {
+        {{-1, -1, 2}, {-1, 0, 1}}
+    };
     assert(s.threeSum(nums) == expected);
+
     nums = {0, 1, 1};
     expected = {};
     assert(s.threeSum(nums) == expected);
+
     nums = {0, 0, 0};
-    expected = {{0, 0, 0}};
+    expected = {
+        {0, 0, 0}
+    };
     assert(s.threeSum(nums) == expected);
 }
 

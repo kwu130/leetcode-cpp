@@ -26,10 +26,12 @@ void test() {
     vector<int> expected = {0, 1};
     vector<int> res = s.twoSum(nums, 9);
     assert(res == expected);
+
     nums = {3, 2, 4};
     expected = {1, 2};
     res = s.twoSum(nums, 6);
     assert(res == expected);
+
     nums = {3, 3};
     expected = {0, 1};
     res = s.twoSum(nums, 6);
