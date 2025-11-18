@@ -19,8 +19,8 @@ public:
             }
         }
 
-        ListNode* dummy = new ListNode(-1);
-        ListNode* cur = dummy;
+        ListNode dummy = ListNode(-1);
+        ListNode* cur = &dummy;
         while (!pq.empty()) {
             auto node = pq.top();
             pq.pop();
@@ -31,7 +31,7 @@ public:
             }
         }
 
-        return dummy->next;
+        return dummy.next;
     }
 };
 

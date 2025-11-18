@@ -12,8 +12,8 @@ class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         int a, b, c, carry = 0;
-        ListNode* head = new ListNode(-1);
-        ListNode* cur = head;
+        ListNode head = ListNode(-1);
+        ListNode* cur = &head;
         while (l1 || l2 || carry) {
             a = l1 ? l1->val : 0;
             b = l2 ? l2->val : 0;
@@ -24,7 +24,7 @@ public:
             l1 = l1 ? l1->next : nullptr;
             l2 = l2 ? l2->next : nullptr;
         }
-        return head->next;
+        return head.next;
     }
 };
 
@@ -34,7 +34,6 @@ void test() {
     ListNode* l2 = listHelper::build({5, 6, 4});
     ListNode* expected = listHelper::build({7, 0, 8});
     ListNode* res = s.addTwoNumbers(l1, l2);
-
     assert(listHelper::equal(res, expected));
     listHelper::free(l1);
     listHelper::free(l2);

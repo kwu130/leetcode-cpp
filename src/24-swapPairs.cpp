@@ -12,9 +12,9 @@ class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
         if (head == nullptr || head->next == nullptr) return head;
-        ListNode* dummy = new ListNode(-1);
-        dummy->next = head;
-        ListNode *pre = dummy, *cur = head;
+        ListNode dummy = ListNode(-1);
+        dummy.next = head;
+        ListNode *pre = &dummy, *cur = head;
         while (cur != nullptr && cur->next != nullptr) {
             ListNode* next = cur->next;
             pre->next = next;
@@ -24,7 +24,7 @@ public:
             cur = cur->next;
         }
 
-        return dummy->next;
+        return dummy.next;
     }
 };
 
