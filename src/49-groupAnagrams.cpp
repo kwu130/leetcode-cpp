@@ -3,7 +3,7 @@
 //
 
 #include <bits/stdc++.h>
-#include "../include/common.h"
+#include "common.h"
 
 using namespace std;
 using namespace compareHelper;

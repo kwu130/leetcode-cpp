@@ -1,13 +1,28 @@
 cmake_minimum_required(VERSION 3.21)
-project(leetcode)
+
+project(leetcode-cpp LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
+if (NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
 
-foreach(SOURCE_FILE ${SOURCE_FILES})
-    get_filename_component(FILE_NAME ${SOURCE_FILE} NAME_WE)
-    add_executable(${FILE_NAME} ${SOURCE_FILE})
+add_compile_options(
+    -Wall
+    -Wextra
+    -Wpedantic
+    -Werror
+)
+
+file(GLOB_RECURSE SOURCE_FILES CONFIGURE_DEPENDS "src/*.cpp")
+
+foreach(SRC ${SOURCE_FILES})
+    get_filename_component(TARGET_NAME ${SRC} NAME_WE)
+    add_executable(${TARGET_NAME} ${SRC})
+    target_include_directories(${TARGET_NAME}
+        PRIVATE
+        ${CMAKE_SOURCE_DIR}/include
+    )
 endforeach()
