@@ -16,10 +16,11 @@ public:
 
 private:
     vector<vector<int>> kSum(vector<int>& nums, int k, int start, long target) {
-        if (nums.size() < k || k < 2) return {};
+        const int n = static_cast<int>(nums.size());
+        if (n < k || k < 2) return {};
         vector<vector<int>> res;
         if (k == 2) {
-            int left = start, right = nums.size() - 1;
+            int left = start, right = n - 1;
             while (left < right) {
                 long sum = nums[left] + nums[right];
                 if (sum == target) {
@@ -33,13 +34,13 @@ private:
                 }
             }
         } else {
-            for (int i = start; i < nums.size(); i++) {
+            for (int i = start; i < n; i++) {
                 auto sub = kSum(nums, k - 1, i + 1, target - nums[i]);
                 for (auto& v : sub) {
                     v.push_back(nums[i]);
                     res.push_back(v);
                 }
-                while (i < nums.size() - 1 && nums[i] == nums[i + 1]) i++;
+                while (i < n - 1 && nums[i] == nums[i + 1]) i++;
             }
         }
 

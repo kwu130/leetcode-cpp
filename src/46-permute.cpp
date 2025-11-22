@@ -20,7 +20,7 @@ private:
             res.emplace_back(path);
             return;
         }
-        for (int i = 0; i < nums.size(); ++i) {
+        for (int i = 0; i < static_cast<int>(nums.size()); ++i) {
             if (used[i]) continue;
             used[i] = true;
             path.emplace_back(nums[i]);

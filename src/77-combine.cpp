@@ -17,7 +17,7 @@ public:
 
 private:
     void dfs(vector<vector<int>>& res, vector<int>&& path, int start, int n, int k) {
-        if (path.size() == k) {
+        if (static_cast<int>(path.size()) == k) {
             res.emplace_back(path);
             return;
         }

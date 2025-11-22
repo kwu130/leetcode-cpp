@@ -9,12 +9,15 @@ using namespace std;
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        char chs[128] = {0};
+        int chs[128] = {0};
         int res = 0;
-        for (int left = 0, right = 0; right < s.size(); right++) {
-            chs[s[right]]++;
-            while (chs[s[right]] > 1) {
-                chs[s[left++]]--;
+        for (int left = 0, right = 0; right < static_cast<int>(s.size()); right++) {
+            auto c = static_cast<unsigned char>(s[right]);
+            chs[c]++;
+            while (chs[c] > 1) {
+                auto lc = static_cast<unsigned char>(s[left]);
+                chs[lc]--;
+                left++;
             }
             res = max(res, right - left + 1);
         }

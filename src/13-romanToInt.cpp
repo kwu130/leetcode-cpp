@@ -20,8 +20,9 @@ public:
         m['M'] = 1000;
 
         int res = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (i < s.size() - 1 && m[s[i]] < m[s[i + 1]]) {
+        const int n = static_cast<int>(s.size());
+        for (int i = 0; i < n; i++) {
+            if (i < n - 1 && m[s[i]] < m[s[i + 1]]) {
                 res -= m[s[i]];
             } else {
                 res += m[s[i]];

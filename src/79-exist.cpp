@@ -26,8 +26,8 @@ private:
         if (path == word) {
             return true;
         }
-        if (i < 0 || i >= board.size() || j < 0 || j >= board[0].size() || search[i][j] ||
-            board[i][j] != word[path.size()]) {
+        if (i < 0 || i >= static_cast<int>(board.size()) || j < 0 || j >= static_cast<int>(board[0].size()) ||
+            search[i][j] || board[i][j] != word[path.size()]) {
             return false;
         }
         search[i][j] = true;

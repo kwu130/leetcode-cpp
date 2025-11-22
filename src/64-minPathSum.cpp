@@ -9,8 +9,8 @@ using namespace std;
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {
-        const int m = grid.size();
-        const int n = grid[0].size();
+        const int m = static_cast<int>(grid.size());
+        const int n = static_cast<int>(grid[0].size());
         vector<vector<int>> dp(m, vector<int>(n, 0));
         dp[0][0] = grid[0][0];
         for (int i = 1; i < m; ++i) {

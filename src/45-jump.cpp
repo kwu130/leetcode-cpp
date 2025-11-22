@@ -12,9 +12,10 @@ public:
         int res = 0;
         int end = 0;
         int farthest = 0;
-        for (int i = 0; i < nums.size() - 1; i++) {
+        const int n = static_cast<int>(nums.size());
+        for (int i = 0; i < n - 1; i++) {
             farthest = max(farthest, i + nums[i]);
-            if (farthest >= nums.size() - 1) {
+            if (farthest >= n - 1) {
                 res++;
                 break;
             }

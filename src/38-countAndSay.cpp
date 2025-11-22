@@ -12,9 +12,10 @@ public:
         string res = "1";
         while (--n) {
             string tmp;
-            for (int i = 0; i < res.size(); ++i) {
+            const int m = static_cast<int>(res.size());
+            for (int i = 0; i < m; ++i) {
                 int cnt = 1;
-                while (i < res.size() - 1 && res[i] == res[i + 1]) {
+                while (i < m - 1 && res[i] == res[i + 1]) {
                     cnt++;
                     i++;
                 }

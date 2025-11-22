@@ -10,7 +10,7 @@ class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
         const int l = static_cast<int>(ranges::lower_bound(nums, target) - nums.begin());  // find first >= target
-        if (l == nums.size() || nums[l] != target) return {-1, -1};
+        if (l == static_cast<int>(nums.size()) || nums[l] != target) return {-1, -1};
         const int r = static_cast<int>(ranges::upper_bound(nums, target) - nums.begin() - 1);  // find first > target
         return {l, r};
     }
