@@ -9,7 +9,7 @@ using namespace std;
 class Solution {
 public:
     int myAtoi(string s) {
-        int i = s.find_first_not_of(' ');
+        size_t i = s.find_first_not_of(' ');
         if (i == string::npos) return 0;
         const int sign = s[i] == '-' ? -1 : 1;
         if (s[i] == '-' || s[i] == '+') i++;

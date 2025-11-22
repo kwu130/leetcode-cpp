@@ -21,7 +21,7 @@ private:
             res.emplace_back(path);
             return;
         }
-        for (int i = index; i < candidates.size(); i++) {
+        for (int i = index; i < static_cast<int>(candidates.size()); i++) {
             if (candidates[i] > target) break;
             path.emplace_back(candidates[i]);
             dfs(candidates, target - candidates[i], i, std::move(path), res);

@@ -21,7 +21,7 @@ private:
             res.emplace_back(path);
             return;
         }
-        for (int i = index; i < candidates.size(); i++) {
+        for (int i = index; i < static_cast<int>(candidates.size()); i++) {
             if (candidates[i] > target) break;
             if (i > index && candidates[i] == candidates[i - 1]) continue;  // 剪枝 重点理解这个 i>index 的作用
             path.emplace_back(candidates[i]);

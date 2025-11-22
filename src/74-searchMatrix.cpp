@@ -9,8 +9,8 @@ using namespace std;
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        const int m = matrix.size();
-        const int n = matrix[0].size();
+        const int m = static_cast<int>(matrix.size());
+        const int n = static_cast<int>(matrix[0].size());
         int i = 0, j = n - 1;
         while (i >= 0 && i < m && j >= 0 && j < n) {
             if (matrix[i][j] == target) {

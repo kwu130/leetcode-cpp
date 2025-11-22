@@ -15,7 +15,7 @@ public:
         int left = 1, right = x / 2;
         int res = 0;
         while (left <= right) {
-            int mid = left + ((right - left) >> 1);
+            const int mid = left + ((right - left) >> 1);
             if (mid <= x / mid) {
                 res = mid;
                 left = mid + 1;

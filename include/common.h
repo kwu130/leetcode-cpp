@@ -22,7 +22,7 @@ ListNode* build(const std::vector<int>& vec) {
     if (vec.empty()) return nullptr;
     ListNode* head = new ListNode(vec[0]);
     ListNode* cur = head;
-    for (int i = 1; i < vec.size(); i++) {
+    for (size_t i = 1; i < vec.size(); i++) {
         cur->next = new ListNode(vec[i]);
         cur = cur->next;
     }

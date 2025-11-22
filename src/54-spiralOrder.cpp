@@ -9,12 +9,12 @@ using namespace std;
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        int m = matrix.size();
-        int n = matrix[0].size();
+        const int m = static_cast<int>(matrix.size());
+        const int n = static_cast<int>(matrix[0].size());
         vector<int> res;
         res.reserve(m * n);
         int i = 0, j = 0;
-        while (res.size() < m * n) {
+        while (static_cast<int>(res.size()) < m * n) {
             while (i >= 0 && i < m && j >= 0 && j < n && matrix[i][j] != INT_MIN) {
                 res.push_back(matrix[i][j]);
                 matrix[i][j] = INT_MIN;

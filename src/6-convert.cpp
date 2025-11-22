@@ -13,7 +13,7 @@ public:
             return s;
         }
         vector<vector<char>> m(numRows);
-        for (int i = 0, row = 0, dir = 1; i < s.size(); i++) {
+        for (int i = 0, row = 0, dir = 1; i < static_cast<int>(s.size()); i++) {
             if (dir == 1) {
                 m[row++].push_back(s[i]);
             } else {

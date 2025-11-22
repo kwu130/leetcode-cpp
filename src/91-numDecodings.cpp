@@ -16,7 +16,7 @@ public:
         } else {
             dp[1] = 1;
         }
-        for (int i = 2; i <= s.size(); i++) {
+        for (int i = 2; i <= static_cast<int>(s.size()); i++) {
             if (s[i - 1] != '0') {
                 dp[i] += dp[i - 1];
             }

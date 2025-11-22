@@ -18,7 +18,7 @@ public:
 private:
     void dfs(vector<int>& nums, int index, vector<int>&& path, vector<vector<int>>& res) {
         res.emplace_back(path);
-        for (int i = index; i < nums.size(); i++) {
+        for (int i = index; i < static_cast<int>(nums.size()); i++) {
             path.emplace_back(nums[i]);
             dfs(nums, i + 1, std::move(path), res);
             path.pop_back();

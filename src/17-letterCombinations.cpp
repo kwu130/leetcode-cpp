@@ -21,7 +21,7 @@ private:
     const vector<string> m{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     void dfs(const string& digits, int index, string&& path, vector<string>& res) {
-        if (index == digits.size()) {
+        if (index == static_cast<int>(digits.size())) {
             res.push_back(path);
             return;
         }

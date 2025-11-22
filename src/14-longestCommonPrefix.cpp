@@ -9,9 +9,10 @@ using namespace std;
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        for (int i = 0; i < strs[0].size(); i++) {
+        const int n = static_cast<int>(strs[0].size());
+        for (int i = 0; i < n; i++) {
             for (const auto& str : strs) {
-                if (i >= str.size() || str[i] != strs[0][i]) {
+                if (i >= n || str[i] != strs[0][i]) {
                     return strs[0].substr(0, i);
                 }
             }
