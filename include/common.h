@@ -1,7 +1,7 @@
 #ifndef LEETCODE_COMMON_H
 #define LEETCODE_COMMON_H
 
-#include <cassert>
+#include <ranges>
 
 namespace listHelper {
 struct ListNode {
@@ -10,17 +10,17 @@ struct ListNode {
     ListNode()
         : val(0),
           next(nullptr) {}
-    ListNode(int x)
+    explicit ListNode(int x)
         : val(x),
           next(nullptr) {}
-    ListNode(int x, ListNode* next)
+    ListNode(const int x, ListNode* next)
         : val(x),
           next(next) {}
 };
 
-ListNode* build(const std::vector<int>& vec) {
+inline ListNode* build(const std::vector<int>& vec) {
     if (vec.empty()) return nullptr;
-    ListNode* head = new ListNode(vec[0]);
+    auto* head = new ListNode(vec[0]);
     ListNode* cur = head;
     for (size_t i = 1; i < vec.size(); i++) {
         cur->next = new ListNode(vec[i]);
@@ -30,7 +30,7 @@ ListNode* build(const std::vector<int>& vec) {
     return head;
 }
 
-bool equal(const ListNode* lhs, const ListNode* rhs) {
+inline bool equal(const ListNode* lhs, const ListNode* rhs) {
     while (lhs != nullptr && rhs != nullptr) {
         if (lhs->val != rhs->val) {
             return false;
@@ -42,7 +42,7 @@ bool equal(const ListNode* lhs, const ListNode* rhs) {
     return lhs == nullptr && rhs == nullptr;
 }
 
-void print(const ListNode* head) {
+inline void print(const ListNode* head) {
     while (head != nullptr) {
         std::cout << head->val << " -> ";
         head = head->next;
@@ -50,7 +50,7 @@ void print(const ListNode* head) {
     std::cout << "nullptr" << std::endl;
 }
 
-void free(ListNode* head) {
+inline void free(ListNode* head) {
     while (head != nullptr) {
         ListNode* tmp = head;
         head = head->next;
@@ -62,14 +62,24 @@ void free(ListNode* head) {
 
 namespace compareHelper {
 template <typename T>
+bool equalIgnoreOrder(std::vector<T> a, std::vector<T> b) {
+    if (a.size() != b.size()) return false;
+
+    std::ranges::sort(a);
+    std::ranges::sort(b);
+
+    return a == b;
+}
+
+template <typename T>
 bool equalIgnoreOrder(std::vector<std::vector<T>> a, std::vector<std::vector<T>> b) {
     if (a.size() != b.size()) return false;
 
-    for (auto& v : a) std::sort(v.begin(), v.end());
-    for (auto& v : b) std::sort(v.begin(), v.end());
+    for (auto& v : a) std::ranges::sort(v);
+    for (auto& v : b) std::ranges::sort(v);
 
-    std::sort(a.begin(), a.end());
-    std::sort(b.begin(), b.end());
+    std::ranges::sort(a);
+    std::ranges::sort(b);
 
     return a == b;
 }
