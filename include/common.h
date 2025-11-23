@@ -61,27 +61,27 @@ inline void free(ListNode* head) {
 
 
 namespace compareHelper {
-template <typename T>
-bool equalIgnoreOrder(std::vector<T> a, std::vector<T> b) {
+template <typename V>
+bool equalIgnoreOrder(const V& a, const V& b) {
     if (a.size() != b.size()) return false;
 
-    std::ranges::sort(a);
-    std::ranges::sort(b);
+    V aa = a;
+    V bb = b;
 
-    return a == b;
-}
+    using Elem = typename V::value_type;
 
-template <typename T>
-bool equalIgnoreOrder(std::vector<std::vector<T>> a, std::vector<std::vector<T>> b) {
-    if (a.size() != b.size()) return false;
+    if constexpr (requires(Elem e) {
+                      e.begin();
+                      e.end();
+                  }) {
+        for (auto& v : aa) std::ranges::sort(v);
+        for (auto& v : bb) std::ranges::sort(v);
+    }
 
-    for (auto& v : a) std::ranges::sort(v);
-    for (auto& v : b) std::ranges::sort(v);
+    std::ranges::sort(aa);
+    std::ranges::sort(bb);
 
-    std::ranges::sort(a);
-    std::ranges::sort(b);
-
-    return a == b;
+    return aa == bb;
 }
 }  // namespace compareHelper
 #endif  // LEETCODE_COMMON_H
