@@ -59,6 +59,67 @@ inline void free(ListNode* head) {
 }
 }  // namespace listHelper
 
+namespace treeHelper {
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode()
+        : val(0),
+          left(nullptr),
+          right(nullptr) {}
+    explicit TreeNode(int x)
+        : val(x),
+          left(nullptr),
+          right(nullptr) {}
+    TreeNode(const int x, TreeNode* left, TreeNode* right)
+        : val(x),
+          left(left),
+          right(right) {}
+};
+
+inline TreeNode* build(const std::vector<int>& vec, int nullptr_val = -1) {
+    if (vec.empty() || vec[0] == nullptr_val) return nullptr;
+
+    std::queue<TreeNode*> q;
+    auto* root = new TreeNode(vec[0]);
+    q.push(root);
+
+    size_t i = 1;
+    while (!q.empty() && i < vec.size()) {
+        TreeNode* cur = q.front();
+        q.pop();
+
+        if (i < vec.size() && vec[i] != nullptr_val) {
+            cur->left = new TreeNode(vec[i]);
+            q.push(cur->left);
+        }
+        i++;
+
+        if (i < vec.size() && vec[i] != nullptr_val) {
+            cur->right = new TreeNode(vec[i]);
+            q.push(cur->right);
+        }
+        i++;
+    }
+    return root;
+}
+
+inline bool equal(const TreeNode* a, const TreeNode* b) {
+    if (a == nullptr && b == nullptr) return true;
+    if (a == nullptr || b == nullptr) return false;
+    if (a->val != b->val) return false;
+
+    return equal(a->left, b->left) && equal(a->right, b->right);
+}
+
+inline void free(const TreeNode* root) {
+    if (root == nullptr) return;
+    free(root->left);
+    free(root->right);
+    delete root;
+}
+}  // namespace treeHelper
 
 namespace compareHelper {
 template <typename V>
