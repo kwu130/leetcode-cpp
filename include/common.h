@@ -105,6 +105,31 @@ inline TreeNode* build(const std::vector<int>& vec, int nullptr_val = -1) {
     return root;
 }
 
+// preorder
+inline void print(const TreeNode* root) {
+    if (root == nullptr) {
+        std::cout << "null" << std::endl;
+        return;
+    }
+
+    std::queue<const TreeNode*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        const TreeNode* cur = q.front();
+        q.pop();
+
+        if (cur == nullptr) {
+            std::cout << "null ";
+        } else {
+            std::cout << cur->val << " ";
+            q.push(cur->left);
+            q.push(cur->right);
+        }
+    }
+    std::cout << std::endl;
+}
+
 inline bool equal(const TreeNode* a, const TreeNode* b) {
     if (a == nullptr && b == nullptr) return true;
     if (a == nullptr || b == nullptr) return false;
