@@ -105,7 +105,7 @@ inline TreeNode* build(const std::vector<int>& vec, int nullptr_val = -1) {
     return root;
 }
 
-// preorder
+// level order
 inline void print(const TreeNode* root) {
     if (root == nullptr) {
         std::cout << "null" << std::endl;
