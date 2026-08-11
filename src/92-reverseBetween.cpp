@@ -2,10 +2,11 @@
 // Created by 1412 on 2025/11/22.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
 
-using namespace std;
+#include "list_helper.h"
+#include "test_helper.h"
+
+
 using listHelper::ListNode;
 
 class Solution {
@@ -33,14 +34,14 @@ void test() {
     ListNode* head = listHelper::build({1, 2, 3, 4, 5});
     ListNode* expected = listHelper::build({1, 4, 3, 2, 5});
     ListNode* res = s.reverseBetween(head, 2, 4);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(res);
     listHelper::free(expected);
 
     head = listHelper::build({5});
     expected = listHelper::build({5});
     res = s.reverseBetween(head, 1, 1);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(res);
     listHelper::free(expected);
 }

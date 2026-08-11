@@ -2,17 +2,20 @@
 // Created by 1412 on 2025/9/29.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <string>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    string convert(string s, int numRows) {
+    std::string convert(std::string s, int numRows) {
         if (s.size() <= 1 || numRows <= 1) {
             return s;
         }
-        vector<vector<char>> m(numRows);
+        std::vector<std::vector<char>> m(numRows);
         for (int i = 0, row = 0, dir = 1; i < static_cast<int>(s.size()); i++) {
             if (dir == 1) {
                 m[row++].push_back(s[i]);
@@ -27,9 +30,9 @@ public:
                 dir = 1;
             }
         }
-        string res;
+        std::string res;
         for (auto& str : m) {
-            ranges::for_each(str, [&res](const char c) { res += c; });
+            std::ranges::for_each(str, [&res](const char c) { res += c; });
         }
         return res;
     }
@@ -37,9 +40,9 @@ public:
 
 void test() {
     Solution s;
-    assert(s.convert("PAYPALISHIRING", 3) == "PAHNAPLSIIGYIR");
-    assert(s.convert("PAYPALISHIRING", 4) == "PINALSIGYAHRPI");
-    assert(s.convert("A", 1) == "A");
+    CHECK(s.convert("PAYPALISHIRING", 3) == "PAHNAPLSIIGYIR");
+    CHECK(s.convert("PAYPALISHIRING", 4) == "PINALSIGYAHRPI");
+    CHECK(s.convert("A", 1) == "A");
 }
 
 int main() {

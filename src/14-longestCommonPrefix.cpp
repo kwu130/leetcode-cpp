@@ -2,13 +2,15 @@
 // Created by 1412 on 2025/10/10.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    string longestCommonPrefix(vector<string>& strs) {
+    std::string longestCommonPrefix(std::vector<std::string>& strs) {
         const int n = static_cast<int>(strs[0].size());
         for (int i = 0; i < n; i++) {
             for (const auto& str : strs) {
@@ -23,11 +25,11 @@ public:
 
 void test() {
     Solution s;
-    vector<string> strs = {"flower", "flow", "flight"};
-    assert(s.longestCommonPrefix(strs) == "fl");
+    std::vector<std::string> strs = {"flower", "flow", "flight"};
+    CHECK(s.longestCommonPrefix(strs) == "fl");
 
     strs = {"dog", "racecar", "car"};
-    assert(s.longestCommonPrefix(strs) == "");
+    CHECK(s.longestCommonPrefix(strs) == "");
 }
 
 int main() {

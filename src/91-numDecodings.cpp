@@ -2,14 +2,16 @@
 // Created by 1412 on 2025/11/21.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    int numDecodings(string s) {
-        vector<int> dp(s.size() + 1, 0);
+    int numDecodings(std::string s) {
+        std::vector<int> dp(s.size() + 1, 0);
         dp[0] = 1;  // ""
         if (s[0] == '0') {
             dp[1] = 0;
@@ -30,9 +32,9 @@ public:
 
 void test() {
     Solution s;
-    assert(s.numDecodings("12") == 2);
-    assert(s.numDecodings("226") == 3);
-    assert(s.numDecodings("06") == 0);
+    CHECK(s.numDecodings("12") == 2);
+    CHECK(s.numDecodings("226") == 3);
+    CHECK(s.numDecodings("06") == 0);
 }
 
 int main() {

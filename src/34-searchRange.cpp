@@ -2,32 +2,35 @@
 // Created by 1412 on 2025/10/21.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    vector<int> searchRange(vector<int>& nums, int target) {
-        const int l = static_cast<int>(ranges::lower_bound(nums, target) - nums.begin());  // find first >= target
+    std::vector<int> searchRange(std::vector<int>& nums, int target) {
+        const int l = static_cast<int>(std::ranges::lower_bound(nums, target) - nums.begin());  // find first >= target
         if (l == static_cast<int>(nums.size()) || nums[l] != target) return {-1, -1};
-        const int r = static_cast<int>(ranges::upper_bound(nums, target) - nums.begin() - 1);  // find first > target
+        const int r =
+            static_cast<int>(std::ranges::upper_bound(nums, target) - nums.begin() - 1);  // find first > target
         return {l, r};
     }
 };
 
 void test() {
     Solution s;
-    vector<int> nums = {5, 7, 7, 8, 8, 10};
-    vector<int> expected = {3, 4};
-    assert(s.searchRange(nums, 8) == expected);
+    std::vector<int> nums = {5, 7, 7, 8, 8, 10};
+    std::vector<int> expected = {3, 4};
+    CHECK(s.searchRange(nums, 8) == expected);
 
     expected = {-1, -1};
-    assert(s.searchRange(nums, 6) == expected);
+    CHECK(s.searchRange(nums, 6) == expected);
 
     nums = {};
     expected = {-1, -1};
-    assert(s.searchRange(nums, 0) == expected);
+    CHECK(s.searchRange(nums, 0) == expected);
 }
 
 int main() {

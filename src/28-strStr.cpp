@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/10/17.
 //
 
-#include <bits/stdc++.h>
+#include <string>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    int strStr(string haystack, string needle) {
+    int strStr(std::string haystack, std::string needle) {
         const int n = haystack.size(), m = needle.size();
         for (int i = 0; i < n - m + 1; i++) {
             if (haystack.substr(i, m) == needle) return i;
@@ -19,8 +20,8 @@ public:
 
 void test() {
     Solution s;
-    assert(s.strStr("sadbutsad", "sad") == 0);
-    assert(s.strStr("leetcode", "leeto") == -1);
+    CHECK(s.strStr("sadbutsad", "sad") == 0);
+    CHECK(s.strStr("leetcode", "leeto") == -1);
 }
 
 int main() {

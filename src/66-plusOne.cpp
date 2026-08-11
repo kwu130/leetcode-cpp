@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/11/8.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    vector<int> plusOne(vector<int>& digits) {
+    std::vector<int> plusOne(std::vector<int>& digits) {
         for (int i = static_cast<int>(digits.size()) - 1; i >= 0; --i) {
             if (digits[i] < 9) {
                 digits[i]++;
@@ -23,20 +24,20 @@ public:
 
 void test() {
     Solution s;
-    vector<int> digits = {1, 2, 3};
-    vector<int> expected = {1, 2, 4};
-    vector<int> res = s.plusOne(digits);
-    assert(res == expected);
+    std::vector<int> digits = {1, 2, 3};
+    std::vector<int> expected = {1, 2, 4};
+    std::vector<int> res = s.plusOne(digits);
+    CHECK(res == expected);
 
     digits = {4, 3, 2, 1};
     expected = {4, 3, 2, 2};
     res = s.plusOne(digits);
-    assert(res == expected);
+    CHECK(res == expected);
 
     digits = {9};
     expected = {1, 0};
     res = s.plusOne(digits);
-    assert(res == expected);
+    CHECK(res == expected);
 }
 
 int main() {

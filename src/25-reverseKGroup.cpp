@@ -2,10 +2,13 @@
 // Created by 1412 on 2025/10/16.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <algorithm>
+#include <functional>
 
-using namespace std;
+#include "list_helper.h"
+#include "test_helper.h"
+
+
 using listHelper::ListNode;
 
 class Solution {
@@ -42,21 +45,21 @@ void test() {
     ListNode* l1 = listHelper::build({1, 2, 3, 4, 5});
     ListNode* expected = listHelper::build({2, 1, 4, 3, 5});
     ListNode* res = s.reverseKGroup(l1, 2);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(res);
     listHelper::free(expected);
 
     l1 = listHelper::build({1, 2, 3, 4, 5});
     expected = listHelper::build({3, 2, 1, 4, 5});
     res = s.reverseKGroup(l1, 3);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(res);
     listHelper::free(expected);
 
     l1 = listHelper::build({1, 2, 3, 4, 5});
     expected = listHelper::build({5, 4, 3, 2, 1});
     res = s.reverseKGroup(l1, 5);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(res);
     listHelper::free(expected);
 }

@@ -2,9 +2,12 @@
 // Created by 1412 on 2025/12/13.
 //
 
-#include <bits/stdc++.h>
+#include <cstddef>
+#include <queue>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Node {
 public:
@@ -38,7 +41,7 @@ public:
         auto* root = new Node(vec[0]);
         q.push(root);
 
-        size_t i = 1;
+        std::size_t i = 1;
         while (!q.empty() && i < vec.size()) {
             Node* cur = q.front();
             q.pop();
@@ -77,10 +80,10 @@ class Solution {
 public:
     Node* connect(Node* root) {
         if (root == nullptr) return nullptr;
-        queue<Node*> q{{root}};
+        std::queue<Node*> q{{root}};
         while (!q.empty()) {
             auto size = q.size();
-            for (size_t i = 0; i < size; ++i) {
+            for (std::size_t i = 0; i < size; ++i) {
                 Node* node = q.front();
                 q.pop();
                 if (node->left != nullptr) q.push(node->left);
@@ -101,13 +104,13 @@ void test() {
     expected->left->left->next = expected->left->right;
     expected->left->right->next = expected->right->right;
     root = s.connect(root);
-    assert(Node::equal(root, expected));
+    CHECK(Node::equal(root, expected));
     free(root);
     free(expected);
     root = Node::build({});
     expected = Node::build({});
     root = s.connect(root);
-    assert(Node::equal(root, expected));
+    CHECK(Node::equal(root, expected));
     free(root);
     free(expected);
 }

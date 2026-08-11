@@ -2,15 +2,18 @@
 // Created by 1412 on 2025/11/15.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    bool exist(vector<vector<char>>& board, string word) {
+    bool exist(std::vector<std::vector<char>>& board, std::string word) {
         const int m = board.size(), n = board[0].size();
-        vector<vector<bool>> search(m, vector<bool>(n, false));
+        std::vector<std::vector<bool>> search(m, std::vector<bool>(n, false));
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 if (dfs(board, word, i, j, search, "")) {
@@ -22,7 +25,12 @@ public:
     }
 
 private:
-    bool dfs(vector<vector<char>>& board, string& word, int i, int j, vector<vector<bool>>& search, string&& path) {
+    bool dfs(std::vector<std::vector<char>>& board,
+             std::string& word,
+             int i,
+             int j,
+             std::vector<std::vector<bool>>& search,
+             std::string&& path) {
         if (path == word) {
             return true;
         }
@@ -46,21 +54,21 @@ private:
 
 void test() {
     Solution s;
-    vector<vector<char>> board = {
+    std::vector<std::vector<char>> board = {
         {'A', 'B', 'C', 'E'},
         {'S', 'F', 'C', 'S'},
         {'A', 'D', 'E', 'E'}
     };
-    assert(s.exist(board, "ABCCED") == true);
-    assert(s.exist(board, "SEE") == true);
-    assert(s.exist(board, "ABCB") == false);
+    CHECK(s.exist(board, "ABCCED") == true);
+    CHECK(s.exist(board, "SEE") == true);
+    CHECK(s.exist(board, "ABCB") == false);
 
     board = {
         {'C', 'A', 'A'},
         {'A', 'A', 'A'},
         {'B', 'C', 'D'}
     };
-    assert(s.exist(board, "AAB") == true);
+    CHECK(s.exist(board, "AAB") == true);
 }
 
 int main() {

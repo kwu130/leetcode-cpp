@@ -2,9 +2,9 @@
 // Created by 1412 on 2026/4/12.
 //
 
-#include <bits/stdc++.h>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
@@ -22,8 +22,8 @@ public:
 
 void test() {
     Solution s;
-    assert(s.lastRemaining(9) == 6);
-    assert(s.lastRemaining(1) == 1);
+    CHECK(s.lastRemaining(9) == 6);
+    CHECK(s.lastRemaining(1) == 1);
 }
 
 int main() {

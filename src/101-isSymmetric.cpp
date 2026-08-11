@@ -2,10 +2,13 @@
 // Created by 1412 on 2025/11/30.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
 
-using namespace std;
+#include <optional>
+
+#include "test_helper.h"
+#include "tree_helper.h"
+
+
 using treeHelper::TreeNode;
 
 class Solution {
@@ -26,13 +29,13 @@ private:
 
 void test() {
     Solution s;
-    int nullptr_value = -1;
-    TreeNode* root = treeHelper::build({1, 2, 2, 3, 4, 4, 3}, nullptr_value);
-    assert(s.isSymmetric(root) == true);
+    constexpr auto nullptr_value = std::nullopt;
+    TreeNode* root = treeHelper::build({1, 2, 2, 3, 4, 4, 3});
+    CHECK(s.isSymmetric(root) == true);
     treeHelper::free(root);
 
-    root = treeHelper::build({1, 2, 2, nullptr_value, 3, nullptr_value, 3}, nullptr_value);
-    assert(s.isSymmetric(root) == false);
+    root = treeHelper::build({1, 2, 2, nullptr_value, 3, nullptr_value, 3});
+    CHECK(s.isSymmetric(root) == false);
     treeHelper::free(root);
 }
 

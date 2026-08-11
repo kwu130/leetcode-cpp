@@ -2,16 +2,18 @@
 // Created by 1412 on 2025/10/23.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <utility>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    string countAndSay(int n) {
-        string res = "1";
+    std::string countAndSay(int n) {
+        std::string res = "1";
         while (--n) {
-            string tmp;
+            std::string tmp;
             const int m = static_cast<int>(res.size());
             for (int i = 0; i < m; ++i) {
                 int cnt = 1;
@@ -19,7 +21,7 @@ public:
                     cnt++;
                     i++;
                 }
-                tmp = tmp + to_string(cnt) + res[i];
+                tmp = tmp + std::to_string(cnt) + res[i];
             }
             res = std::move(tmp);
         }
@@ -30,8 +32,8 @@ public:
 
 void test() {
     Solution s;
-    assert(s.countAndSay(4) == "1211");
-    assert(s.countAndSay(1) == "1");
+    CHECK(s.countAndSay(4) == "1211");
+    CHECK(s.countAndSay(1) == "1");
 }
 
 int main() {

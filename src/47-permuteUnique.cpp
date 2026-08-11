@@ -2,21 +2,27 @@
 // Created by 1412 on 2025/10/27.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    vector<vector<int>> permuteUnique(vector<int>& nums) {
-        vector<vector<int>> res;
-        ranges::sort(nums);  // sort nums firstly
-        dfs(nums, vector<bool>(nums.size(), false), {}, res);
+    std::vector<std::vector<int>> permuteUnique(std::vector<int>& nums) {
+        std::vector<std::vector<int>> res;
+        std::ranges::sort(nums);  // sort nums firstly
+        dfs(nums, std::vector<bool>(nums.size(), false), {}, res);
         return res;
     }
 
 private:
-    void dfs(vector<int>& nums, vector<bool>&& used, vector<int>&& path, vector<vector<int>>& res) {
+    void dfs(std::vector<int>& nums,
+             std::vector<bool>&& used,
+             std::vector<int>&& path,
+             std::vector<std::vector<int>>& res) {
         if (path.size() == nums.size()) {
             res.emplace_back(path);
             return;
@@ -35,13 +41,13 @@ private:
 
 void test() {
     Solution s;
-    vector<int> nums = {1, 1, 2};
-    vector<vector<int>> expected = {
+    std::vector<int> nums = {1, 1, 2};
+    std::vector<std::vector<int>> expected = {
         {1, 1, 2},
         {1, 2, 1},
         {2, 1, 1}
     };
-    assert(s.permuteUnique(nums) == expected);
+    CHECK(s.permuteUnique(nums) == expected);
 
     nums = {1, 2, 3};
     expected = {
@@ -52,7 +58,7 @@ void test() {
         {3, 1, 2},
         {3, 2, 1}
     };
-    assert(s.permuteUnique(nums) == expected);
+    CHECK(s.permuteUnique(nums) == expected);
 }
 
 int main() {

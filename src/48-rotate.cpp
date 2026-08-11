@@ -2,23 +2,26 @@
 // Created by 1412 on 2025/10/28.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    void rotate(vector<vector<int>>& matrix) {
+    void rotate(std::vector<std::vector<int>>& matrix) {
         const int m = matrix.size();
         const int n = matrix[0].size();
         for (int i = 0; i < m; i++) {
             for (int j = i; j < n; j++) {
-                swap(matrix[i][j], matrix[j][i]);  // 转置
+                std::swap(matrix[i][j], matrix[j][i]);  // 转置
             }
         }
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n / 2; j++) {
-                swap(matrix[i][j], matrix[i][n - j - 1]);  // 镜像
+                std::swap(matrix[i][j], matrix[i][n - j - 1]);  // 镜像
             }
         }
     }
@@ -26,18 +29,18 @@ public:
 
 void test() {
     Solution s;
-    vector<vector<int>> matrix = {
+    std::vector<std::vector<int>> matrix = {
         {1, 2, 3},
         {4, 5, 6},
         {7, 8, 9}
     };
-    vector<vector<int>> expected = {
+    std::vector<std::vector<int>> expected = {
         {7, 4, 1},
         {8, 5, 2},
         {9, 6, 3}
     };
     s.rotate(matrix);
-    assert(matrix == expected);
+    CHECK(matrix == expected);
 
     matrix = {
         { 5,  1,  9, 11},
@@ -52,7 +55,7 @@ void test() {
         {16,  7, 10, 11}
     };
     s.rotate(matrix);
-    assert(matrix == expected);
+    CHECK(matrix == expected);
 }
 
 int main() {

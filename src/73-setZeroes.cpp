@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/11/11.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    void setZeroes(vector<vector<int>>& matrix) {
+    void setZeroes(std::vector<std::vector<int>>& matrix) {
         bool row0 = false, col0 = false;
         const int m = matrix.size(), n = matrix[0].size();
         for (int i = 0; i < n; ++i) {
@@ -53,18 +54,18 @@ public:
 
 void test() {
     Solution s;
-    vector<vector<int>> matrix = {
+    std::vector<std::vector<int>> matrix = {
         {1, 1, 1},
         {1, 0, 1},
         {1, 1, 1}
     };
-    vector<vector<int>> expected = {
+    std::vector<std::vector<int>> expected = {
         {1, 0, 1},
         {0, 0, 0},
         {1, 0, 1}
     };
     s.setZeroes(matrix);
-    assert(matrix == expected);
+    CHECK(matrix == expected);
 
     matrix = {
         {0, 1, 2, 0},
@@ -77,7 +78,7 @@ void test() {
         {0, 3, 1, 0}
     };
     s.setZeroes(matrix);
-    assert(matrix == expected);
+    CHECK(matrix == expected);
 }
 
 int main() {

@@ -2,21 +2,24 @@
 // Created by 1412 on 2025/11/23.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <string>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "compare_helper.h"
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    vector<string> restoreIpAddresses(string s) {
-        vector<string> res;
+    std::vector<std::string> restoreIpAddresses(std::string s) {
+        std::vector<std::string> res;
         dfs(s, 0, {}, res);
         return res;
     }
 
 private:
-    void dfs(const string s, int index, vector<string>&& path, vector<string>& res) {
+    void dfs(const std::string s, int index, std::vector<std::string>&& path, std::vector<std::string>& res) {
         if (path.size() == 4) {
             if (index == static_cast<int>(s.size())) {
                 res.emplace_back(path[0] + "." + path[1] + "." + path[2] + "." + path[3]);
@@ -30,8 +33,8 @@ private:
             if (l != 1 && s[index] == '0') {
                 return;
             }
-            string segment = s.substr(index, l);
-            if (l == 3 && stoi(segment) > 255) {
+            std::string segment = s.substr(index, l);
+            if (l == 3 && std::stoi(segment) > 255) {
                 return;
             }
             path.push_back(segment);
@@ -43,17 +46,17 @@ private:
 
 void test() {
     Solution s;
-    vector<string> expected = {"255.255.11.135", "255.255.111.35"};
-    vector<string> res = s.restoreIpAddresses("25525511135");
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    std::vector<std::string> expected = {"255.255.11.135", "255.255.111.35"};
+    std::vector<std::string> res = s.restoreIpAddresses("25525511135");
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 
     expected = {"0.0.0.0"};
     res = s.restoreIpAddresses("0000");
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 
     expected = {"1.0.10.23", "1.0.102.3", "10.1.0.23", "10.10.2.3", "101.0.2.3"};
     res = s.restoreIpAddresses("101023");
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 }
 
 int main() {

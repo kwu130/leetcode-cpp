@@ -2,17 +2,20 @@
 // Created by 1412 on 2025/12/13.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <stack>
+#include <optional>
 
-using namespace std;
+#include "test_helper.h"
+#include "tree_helper.h"
+
+
 using treeHelper::TreeNode;
 
 class Solution {
 public:
     void flatten(TreeNode* root) {
         if (root == nullptr) return;
-        stack<TreeNode*> s{{root}};
+        std::stack<TreeNode*> s{{root}};
         while (!s.empty()) {
             auto node = s.top();
             s.pop();
@@ -28,26 +31,26 @@ public:
 
 void test() {
     Solution s;
-    int nullptr_val = -1;
+    constexpr auto nullptr_val = std::nullopt;
     TreeNode* root = treeHelper::build({1, 2, 5, 3, 4, nullptr_val, 6});
     TreeNode* expected =
         treeHelper::build({1, nullptr_val, 2, nullptr_val, 3, nullptr_val, 4, nullptr_val, 5, nullptr_val, 6});
     s.flatten(root);
-    assert(treeHelper::equal(root, expected));
+    CHECK(treeHelper::equal(root, expected));
     treeHelper::free(root);
     treeHelper::free(expected);
 
     root = treeHelper::build({});
     expected = treeHelper::build({});
     s.flatten(root);
-    assert(treeHelper::equal(root, expected));
+    CHECK(treeHelper::equal(root, expected));
     treeHelper::free(root);
     treeHelper::free(expected);
 
-    root = treeHelper::build({0}, nullptr_val);
-    expected = treeHelper::build({0}, nullptr_val);
+    root = treeHelper::build({0});
+    expected = treeHelper::build({0});
     s.flatten(root);
-    assert(treeHelper::equal(root, expected));
+    CHECK(treeHelper::equal(root, expected));
     treeHelper::free(root);
     treeHelper::free(expected);
 }

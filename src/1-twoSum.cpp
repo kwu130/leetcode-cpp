@@ -2,14 +2,16 @@
 // Created by 1412 on 2025/9/23.
 //
 
-#include <bits/stdc++.h>
+#include <unordered_map>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> hash;
+    std::vector<int> twoSum(std::vector<int>& nums, int target) {
+        std::unordered_map<int, int> hash;
         for (int i = 0; i < static_cast<int>(nums.size()); i++) {
             if (hash.contains(target - nums[i])) {
                 return {hash[target - nums[i]], i};
@@ -22,20 +24,20 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums = {2, 7, 11, 15};
-    vector<int> expected = {0, 1};
-    vector<int> res = s.twoSum(nums, 9);
-    assert(res == expected);
+    std::vector<int> nums = {2, 7, 11, 15};
+    std::vector<int> expected = {0, 1};
+    std::vector<int> res = s.twoSum(nums, 9);
+    CHECK(res == expected);
 
     nums = {3, 2, 4};
     expected = {1, 2};
     res = s.twoSum(nums, 6);
-    assert(res == expected);
+    CHECK(res == expected);
 
     nums = {3, 3};
     expected = {0, 1};
     res = s.twoSum(nums, 6);
-    assert(res == expected);
+    CHECK(res == expected);
 }
 
 int main() {

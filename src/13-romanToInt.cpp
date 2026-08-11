@@ -2,14 +2,16 @@
 // Created by 1412 on 2025/10/9.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <unordered_map>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    int romanToInt(string s) {
-        unordered_map<char, int> m(7);
+    int romanToInt(std::string s) {
+        std::unordered_map<char, int> m(7);
 
         m['I'] = 1;
         m['V'] = 5;
@@ -35,11 +37,11 @@ public:
 
 void test() {
     Solution s;
-    assert(s.romanToInt("III") == 3);
-    assert(s.romanToInt("IV") == 4);
-    assert(s.romanToInt("IX") == 9);
-    assert(s.romanToInt("LVIII") == 58);
-    assert(s.romanToInt("MCMXCIV") == 1994);
+    CHECK(s.romanToInt("III") == 3);
+    CHECK(s.romanToInt("IV") == 4);
+    CHECK(s.romanToInt("IX") == 9);
+    CHECK(s.romanToInt("LVIII") == 58);
+    CHECK(s.romanToInt("MCMXCIV") == 1994);
 }
 
 int main() {

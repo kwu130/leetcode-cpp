@@ -2,19 +2,23 @@
 // Created by 1412 on 2025/10/5.
 //
 
-#include <bits/stdc++.h>
+#include <cctype>
+#include <climits>
+#include <cstddef>
+#include <string>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    int myAtoi(string s) {
-        size_t i = s.find_first_not_of(' ');
-        if (i == string::npos) return 0;
+    int myAtoi(std::string s) {
+        std::size_t i = s.find_first_not_of(' ');
+        if (i == std::string::npos) return 0;
         const int sign = s[i] == '-' ? -1 : 1;
         if (s[i] == '-' || s[i] == '+') i++;
         long res = 0;
-        while (i < s.size() && isdigit(s[i])) {
+        while (i < s.size() && std::isdigit(s[i])) {
             res = res * 10 + (s[i++] - '0');
             if (sign * res < INT_MIN) return INT_MIN;
             if (sign * res > INT_MAX) return INT_MAX;
@@ -25,11 +29,11 @@ public:
 
 void test() {
     Solution s;
-    assert(s.myAtoi("42") == 42);
-    assert(s.myAtoi("-042") == -42);
-    assert(s.myAtoi("1337c0d3") == 1337);
-    assert(s.myAtoi("-0-1") == 0);
-    assert(s.myAtoi("words and 987") == 0);
+    CHECK(s.myAtoi("42") == 42);
+    CHECK(s.myAtoi("-042") == -42);
+    CHECK(s.myAtoi("1337c0d3") == 1337);
+    CHECK(s.myAtoi("-0-1") == 0);
+    CHECK(s.myAtoi("words and 987") == 0);
 }
 
 int main() {

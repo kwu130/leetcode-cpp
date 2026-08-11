@@ -2,10 +2,13 @@
 // Created by 1412 on 2025/11/26.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <algorithm>
+#include <optional>
 
-using namespace std;
+#include "test_helper.h"
+#include "tree_helper.h"
+
+
 using TreeNode = treeHelper::TreeNode;
 
 class Solution {
@@ -23,13 +26,13 @@ private:
 
 void test() {
     Solution s;
-    int nullptr_value = -1;
-    TreeNode* root = treeHelper::build({2, 1, 3}, nullptr_value);
-    assert(s.isValidBST(root) == true);
+    constexpr auto nullptr_value = std::nullopt;
+    TreeNode* root = treeHelper::build({2, 1, 3});
+    CHECK(s.isValidBST(root) == true);
     treeHelper::free(root);
 
-    root = treeHelper::build({5, 1, 4, nullptr_value, nullptr_value, 3, 6}, nullptr_value);
-    assert(s.isValidBST(root) == false);
+    root = treeHelper::build({5, 1, 4, nullptr_value, nullptr_value, 3, 6});
+    CHECK(s.isValidBST(root) == false);
     treeHelper::free(root);
 }
 

@@ -2,14 +2,15 @@
 // Created by 1412 on 2025/11/9.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
     int climbStairs(int n) {
-        vector<int> dp(n + 1);
+        std::vector<int> dp(n + 1);
         dp[0] = 1;
         dp[1] = 1;
         for (int i = 2; i <= n; ++i) {
@@ -21,8 +22,8 @@ public:
 
 void test() {
     Solution s;
-    assert(s.climbStairs(2) == 2);
-    assert(s.climbStairs(3) == 3);
+    CHECK(s.climbStairs(2) == 2);
+    CHECK(s.climbStairs(3) == 3);
 }
 
 int main() {

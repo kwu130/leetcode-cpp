@@ -2,23 +2,29 @@
 // Created by 1412 on 2025/12/1.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <algorithm>
+#include <cstddef>
+#include <queue>
+#include <vector>
+#include <optional>
 
-using namespace std;
+#include "test_helper.h"
+#include "tree_helper.h"
+
+
 using treeHelper::TreeNode;
 
 class Solution {
 public:
-    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<vector<int>> res;
+    std::vector<std::vector<int>> zigzagLevelOrder(TreeNode* root) {
+        std::vector<std::vector<int>> res;
         if (root == nullptr) return res;
-        queue<TreeNode*> q;
+        std::queue<TreeNode*> q;
         q.push(root);
         bool left_to_right = true;
         while (!q.empty()) {
-            size_t n = q.size();
-            vector<int> level;
+            std::size_t n = q.size();
+            std::vector<int> level;
             while (n--) {
                 TreeNode* node = q.front();
                 q.pop();
@@ -27,7 +33,7 @@ public:
                 if (node->right != nullptr) q.push(node->right);
             }
             if (!left_to_right) {
-                ranges::reverse(level);
+                std::ranges::reverse(level);
             }
             left_to_right = !left_to_right;
             res.push_back(level);
@@ -38,27 +44,27 @@ public:
 
 void test() {
     Solution s;
-    int nullptr_value = -1;
-    TreeNode* root = treeHelper::build({3, 9, 20, nullptr_value, nullptr_value, 15, 7}, nullptr_value);
-    vector<vector<int>> res = s.zigzagLevelOrder(root);
-    vector<vector<int>> expected = {
+    constexpr auto nullptr_value = std::nullopt;
+    TreeNode* root = treeHelper::build({3, 9, 20, nullptr_value, nullptr_value, 15, 7});
+    std::vector<std::vector<int>> res = s.zigzagLevelOrder(root);
+    std::vector<std::vector<int>> expected = {
         {3},
         {20, 9},
         {15, 7}
     };
-    assert(res == expected);
+    CHECK(res == expected);
     treeHelper::free(root);
 
-    root = treeHelper::build({1}, nullptr_value);
+    root = treeHelper::build({1});
     expected = {{1}};
     res = s.zigzagLevelOrder(root);
-    assert(res == expected);
+    CHECK(res == expected);
     treeHelper::free(root);
 
-    root = treeHelper::build({}, nullptr_value);
+    root = treeHelper::build({});
     expected = {};
     res = s.zigzagLevelOrder(root);
-    assert(res == expected);
+    CHECK(res == expected);
     treeHelper::free(root);
 }
 

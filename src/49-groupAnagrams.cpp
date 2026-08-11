@@ -2,22 +2,27 @@
 // Created by 1412 on 2025/10/29.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <algorithm>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
-using namespace std;
+#include "compare_helper.h"
+#include "test_helper.h"
+
+
 using namespace compareHelper;
 
 class Solution {
 public:
-    vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        vector<vector<string>> res;
+    std::vector<std::vector<std::string>> groupAnagrams(std::vector<std::string>& strs) {
+        std::vector<std::vector<std::string>> res;
         res.reserve(strs.size());
-        unordered_map<string, vector<string>> mp;
+        std::unordered_map<std::string, std::vector<std::string>> mp;
 
         for (const auto& str : strs) {
-            string tmp = str;
-            ranges::sort(tmp);
+            std::string tmp = str;
+            std::ranges::sort(tmp);
             mp[tmp].push_back(str);
         }
 
@@ -31,24 +36,24 @@ public:
 
 void test() {
     Solution s;
-    vector<string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
-    vector<vector<string>> expected = {
+    std::vector<std::string> strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
+    std::vector<std::vector<std::string>> expected = {
         {"bat"},
         {"nat", "tan"},
         {"ate", "eat", "tea"}
     };
-    vector<vector<string>> res = s.groupAnagrams(strs);
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    std::vector<std::vector<std::string>> res = s.groupAnagrams(strs);
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 
     strs = {""};
     expected = {{""}};
     res = s.groupAnagrams(strs);
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 
     strs = {"a"};
     expected = {{"a"}};
     res = s.groupAnagrams(strs);
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 }
 
 int main() {

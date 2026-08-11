@@ -2,14 +2,16 @@
 // Created by 1412 on 2025/9/27.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <utility>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    string longestPalindrome(string s) {
-        pair<int, int> index{0, 0};
+    std::string longestPalindrome(std::string s) {
+        std::pair<int, int> index{0, 0};
         for (int i = 0; i < static_cast<int>(s.size()); i++) {
             auto index1 = findPalindrome(s, i, i);
             auto index2 = findPalindrome(s, i, i + 1);
@@ -20,7 +22,7 @@ public:
     }
 
 private:
-    static pair<int, int> findPalindrome(string s, int left, int right) {
+    static std::pair<int, int> findPalindrome(std::string s, int left, int right) {
         while (left >= 0 && right < static_cast<int>(s.size()) && s[left] == s[right]) {
             left--;
             right++;
@@ -31,9 +33,9 @@ private:
 
 void test() {
     Solution s;
-    assert(s.longestPalindrome("babad") == "bab");
-    assert(s.longestPalindrome("cbbd") == "bb");
-    assert(s.longestPalindrome("a") == "a");
+    CHECK(s.longestPalindrome("babad") == "bab");
+    CHECK(s.longestPalindrome("cbbd") == "bb");
+    CHECK(s.longestPalindrome("a") == "a");
 }
 
 int main() {

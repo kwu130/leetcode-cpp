@@ -2,9 +2,9 @@
 // Created by 1412 on 2025/11/9.
 //
 
-#include <bits/stdc++.h>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
@@ -29,8 +29,8 @@ public:
 
 void test() {
     Solution s;
-    assert(s.mySqrt(4) == 2);
-    assert(s.mySqrt(8) == 2);
+    CHECK(s.mySqrt(4) == 2);
+    CHECK(s.mySqrt(8) == 2);
 }
 
 int main() {

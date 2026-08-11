@@ -2,10 +2,14 @@
 // Created by 1412 on 2025/12/5.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <algorithm>
+#include <optional>
 
-using namespace std;
+#include "list_helper.h"
+#include "test_helper.h"
+#include "tree_helper.h"
+
+
 using listHelper::ListNode;
 using treeHelper::TreeNode;
 
@@ -36,17 +40,17 @@ void test() {
     Solution s;
     ListNode* head = listHelper::build({-10, -3, 0, 5, 9});
     TreeNode* root = s.sortedListToBST(head);
-    int nullptr_value = -1;
-    TreeNode* expected = treeHelper::build({0, -3, 9, -10, nullptr_value, 5}, nullptr_value);
-    assert(treeHelper::equal(root, expected));
+    constexpr auto nullptr_value = std::nullopt;
+    TreeNode* expected = treeHelper::build({0, -3, 9, -10, nullptr_value, 5});
+    CHECK(treeHelper::equal(root, expected));
     listHelper::free(head);
     treeHelper::free(root);
     treeHelper::free(expected);
 
     head = listHelper::build({});
     root = s.sortedListToBST(head);
-    expected = treeHelper::build({}, nullptr_value);
-    assert(treeHelper::equal(root, expected));
+    expected = treeHelper::build({});
+    CHECK(treeHelper::equal(root, expected));
     listHelper::free(head);
     treeHelper::free(root);
     treeHelper::free(expected);

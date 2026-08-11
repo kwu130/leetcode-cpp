@@ -2,9 +2,10 @@
 // Created by 1412 on 2025/10/30.
 //
 
-#include <bits/stdc++.h>
+#include <cstdlib>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
@@ -23,9 +24,9 @@ private:
 
 void test() {
     Solution s;
-    assert(abs(s.myPow(2.0, 10) - 1024.0) < 1e-9);
-    assert(abs(s.myPow(2.1, 3) - 9.261) < 1e-9);
-    assert(abs(s.myPow(2.0, -2) - 0.25) < 1e-9);
+    CHECK(std::abs(s.myPow(2.0, 10) - 1024.0) < 1e-9);
+    CHECK(std::abs(s.myPow(2.1, 3) - 9.261) < 1e-9);
+    CHECK(std::abs(s.myPow(2.0, -2) - 0.25) < 1e-9);
 }
 
 int main() {

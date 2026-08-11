@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/11/19.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+    void merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n) {
         int i = m - 1, j = n - 1, k = m + n - 1;
         while (j >= 0) {
             if (i >= 0 && nums1[i] > nums2[j]) {
@@ -22,23 +23,23 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums1 = {1, 2, 3, 0, 0, 0};
-    vector<int> nums2 = {2, 5, 6};
-    vector<int> expected = {1, 2, 2, 3, 5, 6};
+    std::vector<int> nums1 = {1, 2, 3, 0, 0, 0};
+    std::vector<int> nums2 = {2, 5, 6};
+    std::vector<int> expected = {1, 2, 2, 3, 5, 6};
     s.merge(nums1, 3, nums2, 3);
-    assert(nums1 == expected);
+    CHECK(nums1 == expected);
 
     nums1 = {1};
     nums2 = {};
     expected = {1};
     s.merge(nums1, 1, nums2, 0);
-    assert(nums1 == expected);
+    CHECK(nums1 == expected);
 
     nums1 = {0};
     nums2 = {1};
     expected = {1};
     s.merge(nums1, 0, nums2, 1);
-    assert(nums1 == expected);
+    CHECK(nums1 == expected);
 }
 
 int main() {

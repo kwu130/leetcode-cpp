@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/9/22.
 //
 
-#include <bits/stdc++.h>
+#include <string>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    char findTheDifference(string s, string t) {
+    char findTheDifference(std::string s, std::string t) {
         int ch_cnt[26] = {0};
         for (const char ch : s) {
             ch_cnt[ch - 'a']++;
@@ -24,9 +25,9 @@ public:
 
 void test() {
     Solution s;
-    assert(s.findTheDifference("abcd", "abcde") == 'e');
-    assert(s.findTheDifference("", "y") == 'y');
-    assert(s.findTheDifference("a", "aa") == 'a');
+    CHECK(s.findTheDifference("abcd", "abcde") == 'e');
+    CHECK(s.findTheDifference("", "y") == 'y');
+    CHECK(s.findTheDifference("a", "aa") == 'a');
 }
 
 int main() {

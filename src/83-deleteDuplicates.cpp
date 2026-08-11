@@ -2,10 +2,11 @@
 // Created by 1412 on 2025/11/17.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
 
-using namespace std;
+#include "list_helper.h"
+#include "test_helper.h"
+
+
 using listHelper::ListNode;
 
 class Solution {
@@ -33,14 +34,14 @@ void test() {
     ListNode* head = listHelper::build({1, 1, 2});
     ListNode* expect = listHelper::build({1, 2});
     ListNode* res = s.deleteDuplicates(head);
-    assert(listHelper::equal(res, expect));
+    CHECK(listHelper::equal(res, expect));
     listHelper::free(res);
     listHelper::free(expect);
 
     head = listHelper::build({1, 1, 2, 3, 3});
     expect = listHelper::build({1, 2, 3});
     res = s.deleteDuplicates(head);
-    assert(listHelper::equal(res, expect));
+    CHECK(listHelper::equal(res, expect));
     listHelper::free(res);
     listHelper::free(expect);
 }

@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/11/4.
 //
 
-#include <bits/stdc++.h>
+#include <string>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    int lengthOfLastWord(string s) {
+    int lengthOfLastWord(std::string s) {
         int i = s.find_last_not_of(' ');
         int res = 0;
         while (i >= 0 && s[i--] != ' ') {
@@ -20,9 +21,9 @@ public:
 
 void test() {
     Solution s;
-    assert(s.lengthOfLastWord("Hello World") == 5);
-    assert(s.lengthOfLastWord("   fly me   to   the moon  ") == 4);
-    assert(s.lengthOfLastWord("luffy is still joyboy") == 6);
+    CHECK(s.lengthOfLastWord("Hello World") == 5);
+    CHECK(s.lengthOfLastWord("   fly me   to   the moon  ") == 4);
+    CHECK(s.lengthOfLastWord("luffy is still joyboy") == 6);
 }
 
 int main() {

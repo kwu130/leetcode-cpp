@@ -2,14 +2,15 @@
 // Created by 1412 on 2025/11/25.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
     int numTrees(int n) {
-        vector<int> dp(n + 1);
+        std::vector<int> dp(n + 1);
         dp[0] = 1;
         dp[1] = 1;
         for (int i = 2; i <= n; i++) {
@@ -23,8 +24,8 @@ public:
 
 void test() {
     Solution s;
-    assert(s.numTrees(3) == 5);
-    assert(s.numTrees(1) == 1);
+    CHECK(s.numTrees(3) == 5);
+    CHECK(s.numTrees(1) == 1);
 }
 
 int main() {

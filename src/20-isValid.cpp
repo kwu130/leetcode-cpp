@@ -2,14 +2,16 @@
 // Created by 1412 on 2025/10/15.
 //
 
-#include <bits/stdc++.h>
+#include <stack>
+#include <string>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    bool isValid(string s) {
-        stack<char> st;
+    bool isValid(std::string s) {
+        std::stack<char> st;
         for (const auto& ch : s) {
             if (ch == '(' || ch == '[' || ch == '{') {
                 st.push(ch);
@@ -31,11 +33,11 @@ public:
 
 void test() {
     Solution s;
-    assert(s.isValid("()") == true);
-    assert(s.isValid("()[]{}") == true);
-    assert(s.isValid("(]") == false);
-    assert(s.isValid("([])") == true);
-    assert(s.isValid("([)]") == false);
+    CHECK(s.isValid("()") == true);
+    CHECK(s.isValid("()[]{}") == true);
+    CHECK(s.isValid("(]") == false);
+    CHECK(s.isValid("([])") == true);
+    CHECK(s.isValid("([)]") == false);
 }
 
 int main() {

@@ -2,20 +2,25 @@
 // Created by 1412 on 2025/10/27.
 //
 
-#include <bits/stdc++.h>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> res;
-        dfs(nums, vector<bool>(nums.size(), false), {}, res);
+    std::vector<std::vector<int>> permute(std::vector<int>& nums) {
+        std::vector<std::vector<int>> res;
+        dfs(nums, std::vector<bool>(nums.size(), false), {}, res);
         return res;
     }
 
 private:
-    void dfs(vector<int>& nums, vector<bool>&& used, vector<int>&& path, vector<vector<int>>& res) {
+    void dfs(std::vector<int>& nums,
+             std::vector<bool>&& used,
+             std::vector<int>&& path,
+             std::vector<std::vector<int>>& res) {
         if (path.size() == nums.size()) {
             res.emplace_back(path);
             return;
@@ -33,8 +38,8 @@ private:
 
 void test() {
     Solution s;
-    vector<int> nums = {1, 2, 3};
-    vector<vector<int>> expected = {
+    std::vector<int> nums = {1, 2, 3};
+    std::vector<std::vector<int>> expected = {
         {1, 2, 3},
         {1, 3, 2},
         {2, 1, 3},
@@ -42,18 +47,18 @@ void test() {
         {3, 1, 2},
         {3, 2, 1}
     };
-    assert(s.permute(nums) == expected);
+    CHECK(s.permute(nums) == expected);
 
     nums = {0, 1};
     expected = {
         {0, 1},
         {1, 0}
     };
-    assert(s.permute(nums) == expected);
+    CHECK(s.permute(nums) == expected);
 
     nums = {1};
     expected = {{1}};
-    assert(s.permute(nums) == expected);
+    CHECK(s.permute(nums) == expected);
 }
 
 int main() {

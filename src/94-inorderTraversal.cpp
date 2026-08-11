@@ -2,17 +2,21 @@
 // Created by 1412 on 2025/11/23.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <stack>
+#include <vector>
+#include <optional>
 
-using namespace std;
+#include "test_helper.h"
+#include "tree_helper.h"
+
+
 using treeHelper::TreeNode;
 
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> res;
-        stack<TreeNode*> s;
+    std::vector<int> inorderTraversal(TreeNode* root) {
+        std::vector<int> res;
+        std::stack<TreeNode*> s;
         while (root != nullptr || !s.empty()) {
             while (root != nullptr) {
                 s.push(root);
@@ -29,23 +33,23 @@ public:
 
 void test() {
     Solution s;
-    int nullptr_val = -1;
-    TreeNode* root = treeHelper::build({1, nullptr_val, 2, 3}, nullptr_val);
-    vector<int> expected = {1, 3, 2};
-    vector<int> res = s.inorderTraversal(root);
-    assert(res == expected);
+    constexpr auto nullptr_val = std::nullopt;
+    TreeNode* root = treeHelper::build({1, nullptr_val, 2, 3});
+    std::vector<int> expected = {1, 3, 2};
+    std::vector<int> res = s.inorderTraversal(root);
+    CHECK(res == expected);
     treeHelper::free(root);
 
-    root = treeHelper::build({}, nullptr_val);
+    root = treeHelper::build({});
     expected = {};
     res = s.inorderTraversal(root);
-    assert(res == expected);
+    CHECK(res == expected);
     treeHelper::free(root);
 
-    root = treeHelper::build({1}, nullptr_val);
+    root = treeHelper::build({1});
     expected = {1};
     res = s.inorderTraversal(root);
-    assert(res == expected);
+    CHECK(res == expected);
     treeHelper::free(root);
 }
 

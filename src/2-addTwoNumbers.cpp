@@ -2,10 +2,11 @@
 // Created by 1412 on 2025/9/24.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
 
-using namespace std;
+#include "list_helper.h"
+#include "test_helper.h"
+
+
 using listHelper::ListNode;
 
 class Solution {
@@ -34,7 +35,7 @@ void test() {
     ListNode* l2 = listHelper::build({5, 6, 4});
     ListNode* expected = listHelper::build({7, 0, 8});
     ListNode* res = s.addTwoNumbers(l1, l2);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(l1);
     listHelper::free(l2);
     listHelper::free(res);
@@ -44,7 +45,7 @@ void test() {
     l2 = listHelper::build({0});
     expected = listHelper::build({0});
     res = s.addTwoNumbers(l1, l2);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(l1);
     listHelper::free(l2);
     listHelper::free(res);
@@ -54,7 +55,7 @@ void test() {
     l2 = listHelper::build({9, 9, 9, 9});
     expected = listHelper::build({8, 9, 9, 9, 0, 0, 0, 1});
     res = s.addTwoNumbers(l1, l2);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(l1);
     listHelper::free(l2);
     listHelper::free(res);

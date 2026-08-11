@@ -2,9 +2,11 @@
 // Created by 1412 on 2025/9/29.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <climits>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
@@ -23,11 +25,11 @@ public:
 
 void test() {
     Solution s;
-    assert(s.reverse(123) == 321);
-    assert(s.reverse(-123) == -321);
-    assert(s.reverse(120) == 21);
-    assert(s.reverse(0) == 0);
-    assert(s.reverse(-2147483412) == -2143847412);
+    CHECK(s.reverse(123) == 321);
+    CHECK(s.reverse(-123) == -321);
+    CHECK(s.reverse(120) == 21);
+    CHECK(s.reverse(0) == 0);
+    CHECK(s.reverse(-2147483412) == -2143847412);
 }
 
 int main() {

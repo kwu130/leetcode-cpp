@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/10/20.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "test_helper.h"
+
 
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
+    int search(std::vector<int>& nums, int target) {
         int l = 0, r = nums.size() - 1;
         while (l <= r) {
             int m = l + ((r - l) >> 1);
@@ -33,12 +34,12 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
-    assert(s.search(nums, 0) == 4);
-    assert(s.search(nums, 3) == -1);
+    std::vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
+    CHECK(s.search(nums, 0) == 4);
+    CHECK(s.search(nums, 3) == -1);
 
     nums = {1};
-    assert(s.search(nums, 0) == -1);
+    CHECK(s.search(nums, 0) == -1);
 }
 
 int main() {
