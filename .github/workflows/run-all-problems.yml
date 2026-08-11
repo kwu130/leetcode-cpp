@@ -1,4 +1,4 @@
-name: Build and Run All Problems
+name: Build and Test All Problems
 
 on:
   push:
@@ -10,36 +10,33 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-run:
-    runs-on: ubuntu-latest
+  build-and-test:
+    name: ${{ matrix.os }} / ${{ matrix.compiler }} / ${{ matrix.build_type }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            compiler: g++
+            build_type: Debug
+          - os: macos-latest
+            compiler: clang++
+            build_type: Release
+
+    env:
+      CXX: ${{ matrix.compiler }}
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake build-essential parallel
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
 
-    - name: Configure project
-      run: cmake -S . -B build
+      - name: Build
+        run: cmake --build build --parallel 2
 
-    - name: Build all
-      run: cmake --build build -- -j$(nproc)
-
-    - name: Run all executables (stop on failure)
-      run: |
-        echo "🔍 Find all problems..."
-        find build -type f -perm /111 | grep -E '/[0-9]+-' > exec_list.txt
-        echo "✅ Found $(wc -l < exec_list.txt) problems"
-
-        echo "🚀 Run all problems..."
-        parallel -j $(nproc) --halt now,fail=1 '
-          exe="{}"
-          echo "▶️ Run: $exe"
-          if ! "$exe"; then
-            echo "❌ failed: $exe"
-            exit 1
-          fi
-        ' :::: exec_list.txt
+      - name: Test
+        run: ctest --test-dir build --parallel 2 --output-on-failure
