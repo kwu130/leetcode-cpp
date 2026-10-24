@@ -2,10 +2,10 @@
 // Created by 1412 on 2025/11/5.
 //
 
-#include <bits/stdc++.h>
+
 #include "common.h"
 
-using namespace std;
+
 using listHelper::ListNode;
 
 class Solution {
@@ -38,14 +38,14 @@ void test() {
     ListNode* head = listHelper::build({1, 2, 3, 4, 5});
     ListNode* expected = listHelper::build({4, 5, 1, 2, 3});
     ListNode* res = s.rotateRight(head, 2);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(head);
     listHelper::free(expected);
 
     head = listHelper::build({0, 1, 2});
     expected = listHelper::build({2, 0, 1});
     res = s.rotateRight(head, 4);
-    assert(listHelper::equal(res, expected));
+    CHECK(listHelper::equal(res, expected));
     listHelper::free(head);
     listHelper::free(expected);
 }

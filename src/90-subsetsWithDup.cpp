@@ -2,22 +2,24 @@
 // Created by 1412 on 2025/11/21.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <utility>
+#include <vector>
+
 #include "common.h"
 
-using namespace std;
 
 class Solution {
 public:
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        vector<vector<int>> res;
-        ranges::sort(nums);
+    std::vector<std::vector<int>> subsetsWithDup(std::vector<int>& nums) {
+        std::vector<std::vector<int>> res;
+        std::ranges::sort(nums);
         dfs(nums, 0, {}, res);
         return res;
     }
 
 private:
-    void dfs(vector<int>& nums, int index, vector<int>&& path, vector<vector<int>>& res) {
+    void dfs(std::vector<int>& nums, int index, std::vector<int>&& path, std::vector<std::vector<int>>& res) {
         res.emplace_back(path);
         for (int i = index; i < static_cast<int>(nums.size()); ++i) {
             if (i > index && nums[i] == nums[i - 1]) {
@@ -32,8 +34,8 @@ private:
 
 void test() {
     Solution s;
-    vector<int> nums = {1, 2, 2};
-    vector<vector<int>> expected = {
+    std::vector<int> nums = {1, 2, 2};
+    std::vector<std::vector<int>> expected = {
         {},
         {1},
         {1, 2},
@@ -41,13 +43,13 @@ void test() {
         {2},
         {2, 2}
     };
-    vector<vector<int>> res = s.subsetsWithDup(nums);
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    std::vector<std::vector<int>> res = s.subsetsWithDup(nums);
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 
     nums = {0};
     expected = {{}, {0}};
     res = s.subsetsWithDup(nums);
-    assert(compareHelper::equalIgnoreOrder(res, expected));
+    CHECK(compareHelper::equalIgnoreOrder(res, expected));
 }
 
 int main() {

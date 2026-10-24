@@ -2,20 +2,22 @@
 // Created by 1412 on 2025/11/3.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        ranges::sort(intervals);
-        vector<vector<int>> res;
+    std::vector<std::vector<int>> merge(std::vector<std::vector<int>>& intervals) {
+        std::ranges::sort(intervals);
+        std::vector<std::vector<int>> res;
         for (const auto& interval : intervals) {
             if (res.empty() || res.back()[1] < interval[0]) {
                 res.emplace_back(interval);
             } else {
-                res.back()[1] = max(res.back()[1], interval[1]);
+                res.back()[1] = std::max(res.back()[1], interval[1]);
             }
         }
         return res;
@@ -24,19 +26,19 @@ public:
 
 void test() {
     Solution s;
-    vector<vector<int>> intervals = {
+    std::vector<std::vector<int>> intervals = {
         { 1,  3},
         { 2,  6},
         { 8, 10},
         {15, 18}
     };
-    vector<vector<int>> expect = {
+    std::vector<std::vector<int>> expect = {
         { 1,  6},
         { 8, 10},
         {15, 18}
     };
-    vector<vector<int>> res = s.merge(intervals);
-    assert(res == expect);
+    std::vector<std::vector<int>> res = s.merge(intervals);
+    CHECK(res == expect);
 
     intervals = {
         {1, 4},
@@ -46,7 +48,7 @@ void test() {
         {1, 5}
     };
     res = s.merge(intervals);
-    assert(res == expect);
+    CHECK(res == expect);
 
     intervals = {
         {4, 7},
@@ -56,7 +58,7 @@ void test() {
         {1, 7}
     };
     res = s.merge(intervals);
-    assert(res == expect);
+    CHECK(res == expect);
 }
 
 int main() {

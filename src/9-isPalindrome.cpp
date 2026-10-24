@@ -2,9 +2,9 @@
 // Created by 1412 on 2025/10/7.
 //
 
-#include <bits/stdc++.h>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
@@ -21,9 +21,9 @@ public:
 
 void test() {
     Solution s;
-    assert(s.isPalindrome(121) == true);
-    assert(s.isPalindrome(-121) == false);
-    assert(s.isPalindrome(10) == false);
+    CHECK(s.isPalindrome(121) == true);
+    CHECK(s.isPalindrome(-121) == false);
+    CHECK(s.isPalindrome(10) == false);
 }
 
 int main() {

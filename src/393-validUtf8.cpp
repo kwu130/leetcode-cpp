@@ -2,14 +2,16 @@
 // Created by 1412 on 2026/4/13.
 //
 
-#include <bits/stdc++.h>
+#include <cstddef>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    bool validUtf8(vector<int>& data) {
-        for (size_t i = 0; i < data.size(); ++i) {
+    bool validUtf8(std::vector<int>& data) {
+        for (std::size_t i = 0; i < data.size(); ++i) {
             if (data[i] >> 7 == 0b0) {
                 continue;
             }
@@ -40,12 +42,12 @@ public:
 
 void test() {
     Solution s;
-    vector<int> data = {197, 130, 1};
-    assert(s.validUtf8(data) == true);
+    std::vector<int> data = {197, 130, 1};
+    CHECK(s.validUtf8(data) == true);
     data = {235, 140, 4};
-    assert(s.validUtf8(data) == false);
+    CHECK(s.validUtf8(data) == false);
     data = {237};
-    assert(s.validUtf8(data) == false);
+    CHECK(s.validUtf8(data) == false);
 }
 
 int main() {

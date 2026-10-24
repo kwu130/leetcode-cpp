@@ -2,14 +2,15 @@
 // Created by 1412 on 2025/12/17.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    vector<int> getRow(int rowIndex) {
-        vector<int> row(rowIndex + 1, 1);  // Create row with all values initialized to 1
+    std::vector<int> getRow(int rowIndex) {
+        std::vector<int> row(rowIndex + 1, 1);  // Create row with all values initialized to 1
 
         // Calculate from row 1 to rowIndex
         for (int i = 1; i <= rowIndex; i++) {
@@ -26,17 +27,17 @@ public:
 void test() {
     Solution s;
     auto res = s.getRow(3);
-    auto expected = vector<int>({1, 3, 3, 1});
-    assert(res == expected);
+    auto expected = std::vector<int>({1, 3, 3, 1});
+    CHECK(res == expected);
     res = s.getRow(0);
-    expected = vector<int>({1});
-    assert(res == expected);
+    expected = std::vector<int>({1});
+    CHECK(res == expected);
     res = s.getRow(1);
-    expected = vector<int>({1, 1});
-    assert(res == expected);
+    expected = std::vector<int>({1, 1});
+    CHECK(res == expected);
     res = s.getRow(4);
-    expected = vector<int>({1, 4, 6, 4, 1});
-    assert(res == expected);
+    expected = std::vector<int>({1, 4, 6, 4, 1});
+    CHECK(res == expected);
 }
 
 int main() {

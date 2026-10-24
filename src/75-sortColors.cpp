@@ -2,20 +2,23 @@
 // Created by 1412 on 2025/11/12.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    void sortColors(vector<int>& nums) {
+    void sortColors(std::vector<int>& nums) {
         for (int i = 0, j = 0, k = nums.size() - 1; j <= k;) {
             if (nums[j] == 0) {
-                swap(nums[i++], nums[j++]);
+                std::swap(nums[i++], nums[j++]);
             } else if (nums[j] == 1) {
                 j++;
             } else if (nums[j] == 2) {
-                swap(nums[j], nums[k--]);
+                std::swap(nums[j], nums[k--]);
             }
         }
     }
@@ -23,15 +26,15 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums = {2, 0, 2, 1, 1, 0};
-    vector<int> expected = {0, 0, 1, 1, 2, 2};
+    std::vector<int> nums = {2, 0, 2, 1, 1, 0};
+    std::vector<int> expected = {0, 0, 1, 1, 2, 2};
     s.sortColors(nums);
-    assert(nums == expected);
+    CHECK(nums == expected);
 
     nums = {2, 0, 1};
     expected = {0, 1, 2};
     s.sortColors(nums);
-    assert(nums == expected);
+    CHECK(nums == expected);
 }
 
 int main() {

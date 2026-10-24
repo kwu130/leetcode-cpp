@@ -2,25 +2,28 @@
 // Created by 1412 on 2025/10/13.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    vector<string> letterCombinations(string digits) {
+    std::vector<std::string> letterCombinations(std::string digits) {
         if (digits.empty()) {
             return {};
         }
-        vector<string> res;
+        std::vector<std::string> res;
         dfs(digits, 0, "", res);
         return res;
     }
 
 private:
-    const vector<string> m{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    const std::vector<std::string> m{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
-    void dfs(const string& digits, int index, string&& path, vector<string>& res) {
+    void dfs(const std::string& digits, int index, std::string&& path, std::vector<std::string>& res) {
         if (index == static_cast<int>(digits.size())) {
             res.push_back(path);
             return;
@@ -35,17 +38,17 @@ private:
 
 void test() {
     Solution s;
-    string digits = "23";
-    vector<string> expected = {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"};
-    assert(s.letterCombinations(digits) == expected);
+    std::string digits = "23";
+    std::vector<std::string> expected = {"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"};
+    CHECK(s.letterCombinations(digits) == expected);
 
     digits = "";
     expected = {};
-    assert(s.letterCombinations(digits) == expected);
+    CHECK(s.letterCombinations(digits) == expected);
 
     digits = "2";
     expected = {"a", "b", "c"};
-    assert(s.letterCombinations(digits) == expected);
+    CHECK(s.letterCombinations(digits) == expected);
 }
 
 int main() {

@@ -2,15 +2,17 @@
 // Created by 1412 on 2025/12/5.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
+#include <optional>
+
 #include "common.h"
 
-using namespace std;
+
 using treeHelper::TreeNode;
 
 class Solution {
 public:
-    TreeNode* sortedArrayToBST(vector<int>& nums) {
+    TreeNode* sortedArrayToBST(std::vector<int>& nums) {
         if (nums.size() == 0) {
             return nullptr;
         }
@@ -18,7 +20,7 @@ public:
     }
 
 private:
-    TreeNode* build(vector<int>& nums, int left, int right) {
+    TreeNode* build(std::vector<int>& nums, int left, int right) {
         if (left > right) {
             return nullptr;
         }
@@ -32,18 +34,18 @@ private:
 
 void test() {
     Solution s;
-    vector<int> nums = {-10, -3, 0, 5, 9};
-    int nullptr_value = -1;
-    TreeNode* expected = treeHelper::build({0, -10, 5, nullptr_value, -3, nullptr_value, 9}, nullptr_value);
+    std::vector<int> nums = {-10, -3, 0, 5, 9};
+    constexpr auto nullptr_value = std::nullopt;
+    TreeNode* expected = treeHelper::build({0, -10, 5, nullptr_value, -3, nullptr_value, 9});
     TreeNode* res = s.sortedArrayToBST(nums);
-    assert(treeHelper::equal(res, expected));
+    CHECK(treeHelper::equal(res, expected));
     treeHelper::free(res);
     treeHelper::free(expected);
 
     nums = {1, 3};
-    expected = treeHelper::build({1, nullptr_value, 3}, nullptr_value);
+    expected = treeHelper::build({1, nullptr_value, 3});
     res = s.sortedArrayToBST(nums);
-    assert(treeHelper::equal(res, expected));
+    CHECK(treeHelper::equal(res, expected));
     treeHelper::free(res);
     treeHelper::free(expected);
 }

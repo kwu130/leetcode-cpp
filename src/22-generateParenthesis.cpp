@@ -2,20 +2,23 @@
 // Created by 1412 on 2025/10/16.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <utility>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    vector<string> generateParenthesis(int n) {
-        vector<string> res;
+    std::vector<std::string> generateParenthesis(int n) {
+        std::vector<std::string> res;
         dfs(res, "", n, n);
         return res;
     }
 
 private:
-    void dfs(vector<string>& res, string&& path, int l, int r) {
+    void dfs(std::vector<std::string>& res, std::string&& path, int l, int r) {
         if (l == 0 && r == 0) {
             res.push_back(path);
             return;
@@ -35,11 +38,11 @@ private:
 
 void test() {
     Solution s;
-    vector<string> expected = {"((()))", "(()())", "(())()", "()(())", "()()()"};
-    assert(s.generateParenthesis(3) == expected);
+    std::vector<std::string> expected = {"((()))", "(()())", "(())()", "()(())", "()()()"};
+    CHECK(s.generateParenthesis(3) == expected);
 
     expected = {"()"};
-    assert(s.generateParenthesis(1) == expected);
+    CHECK(s.generateParenthesis(1) == expected);
 }
 
 int main() {

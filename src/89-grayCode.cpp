@@ -2,14 +2,15 @@
 // Created by 1412 on 2025/11/19.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    vector<int> grayCode(int n) {
-        vector<int> res(1 << n);
+    std::vector<int> grayCode(int n) {
+        std::vector<int> res(1 << n);
         for (int i = 0; i < (1 << n); i++) {
             res[i] = i ^ (i >> 1);
         }
@@ -19,11 +20,11 @@ public:
 
 void test() {
     Solution s;
-    vector<int> expect = {0, 1, 3, 2};
-    assert(s.grayCode(2) == expect);
+    std::vector<int> expect = {0, 1, 3, 2};
+    CHECK(s.grayCode(2) == expect);
 
     expect = {0, 1};
-    assert(s.grayCode(1) == expect);
+    CHECK(s.grayCode(1) == expect);
 }
 
 int main() {

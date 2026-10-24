@@ -2,18 +2,20 @@
 // Created by 1412 on 2025/10/12.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
+    std::vector<std::vector<int>> threeSum(std::vector<int>& nums) {
         if (nums.size() < 3) {
             return {};
         }
-        vector<vector<int>> res;
-        ranges::sort(nums);
+        std::vector<std::vector<int>> res;
+        std::ranges::sort(nums);
         const int n = static_cast<int>(nums.size());
         for (int i = 0; i < n - 2; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) {
@@ -43,21 +45,21 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums = {-1, 0, 1, 2, -1, -4};
-    vector<vector<int>> expected = {
+    std::vector<int> nums = {-1, 0, 1, 2, -1, -4};
+    std::vector<std::vector<int>> expected = {
         {{-1, -1, 2}, {-1, 0, 1}}
     };
-    assert(s.threeSum(nums) == expected);
+    CHECK(s.threeSum(nums) == expected);
 
     nums = {0, 1, 1};
     expected = {};
-    assert(s.threeSum(nums) == expected);
+    CHECK(s.threeSum(nums) == expected);
 
     nums = {0, 0, 0};
     expected = {
         {0, 0, 0}
     };
-    assert(s.threeSum(nums) == expected);
+    CHECK(s.threeSum(nums) == expected);
 }
 
 int main() {

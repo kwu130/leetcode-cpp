@@ -2,27 +2,32 @@
 // Created by 1412 on 2025/9/21.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <utility>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    int lengthLongestPath(string input) {
+    int lengthLongestPath(std::string input) {
         int res = 0;
-        stack<pair<int, int>> s;
+        std::stack<std::pair<int, int>> s;
         s.emplace(-1, 0);  // 栈顶元素为当前路径的深度和当前路径的长度 设置哨兵元素
-        istringstream iss(input);
-        string token;
-        auto is_file = [](const string& s) { return ranges::find(s, '.') != s.end(); };
-        while (getline(iss, token, '\n')) {
-            int depth = ranges::count(token, '\t');
-            erase(token, '\t');
+        std::istringstream iss(input);
+        std::string token;
+        auto is_file = [](const std::string& s) { return std::ranges::find(s, '.') != s.end(); };
+        while (std::getline(iss, token, '\n')) {
+            int depth = std::ranges::count(token, '\t');
+            std::erase(token, '\t');
             while (depth <= s.top().first) {
                 s.pop();  // 保证栈顶元素的深度小于当前元素
             }
             if (is_file(token)) {
-                res = max(res, s.top().second + static_cast<int>(token.size()));
+                res = std::max(res, s.top().second + static_cast<int>(token.size()));
             } else {
                 s.emplace(depth, s.top().second + static_cast<int>(token.size()) + 1);  // +1 是因为路径中的/
             }
@@ -33,11 +38,11 @@ public:
 
 void test() {
     Solution s;
-    assert(s.lengthLongestPath("dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext") == 20);
-    assert(s.lengthLongestPath(
-               "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext") == 32);
-    assert(s.lengthLongestPath("a") == 0);
-    assert(s.lengthLongestPath("file1.txt\nfile2.txt\nlongfile.txt") == 12);
+    CHECK(s.lengthLongestPath("dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext") == 20);
+    CHECK(s.lengthLongestPath(
+              "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext") == 32);
+    CHECK(s.lengthLongestPath("a") == 0);
+    CHECK(s.lengthLongestPath("file1.txt\nfile2.txt\nlongfile.txt") == 12);
 }
 
 int main() {

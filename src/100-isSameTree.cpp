@@ -2,10 +2,12 @@
 // Created by 1412 on 2025/11/30.
 //
 
-#include <bits/stdc++.h>
+
+#include <optional>
+
 #include "common.h"
 
-using namespace std;
+
 using TreeNode = treeHelper::TreeNode;
 
 class Solution {
@@ -22,22 +24,28 @@ private:
 
 void test() {
     Solution s;
-    int nullptr_value = -1;
-    TreeNode* root1 = treeHelper::build({1, 2, 3}, nullptr_value);
-    TreeNode* root2 = treeHelper::build({1, 2, 3}, nullptr_value);
-    assert(s.isSameTree(root1, root2) == true);
+    constexpr auto nullptr_value = std::nullopt;
+    TreeNode* root1 = treeHelper::build({1, 2, 3});
+    TreeNode* root2 = treeHelper::build({1, 2, 3});
+    CHECK(s.isSameTree(root1, root2) == true);
     treeHelper::free(root1);
     treeHelper::free(root2);
 
-    root1 = treeHelper::build({1, 2}, nullptr_value);
-    root2 = treeHelper::build({1, nullptr_value, 2}, nullptr_value);
-    assert(s.isSameTree(root1, root2) == false);
+    root1 = treeHelper::build({1, 2});
+    root2 = treeHelper::build({1, nullptr_value, 2});
+    CHECK(s.isSameTree(root1, root2) == false);
     treeHelper::free(root1);
     treeHelper::free(root2);
 
-    root1 = treeHelper::build({1, 2, 1}, nullptr_value);
-    root2 = treeHelper::build({1, 1, 2}, nullptr_value);
-    assert(s.isSameTree(root1, root2) == false);
+    root1 = treeHelper::build({1, 2, 1});
+    root2 = treeHelper::build({1, 1, 2});
+    CHECK(s.isSameTree(root1, root2) == false);
+    treeHelper::free(root1);
+    treeHelper::free(root2);
+
+    root1 = treeHelper::build({-1, nullptr_value, -2});
+    root2 = treeHelper::build({-1, nullptr_value, -2});
+    CHECK(s.isSameTree(root1, root2) == true);
     treeHelper::free(root1);
     treeHelper::free(root2);
 }

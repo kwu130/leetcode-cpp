@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/10/17.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    int removeElement(vector<int>& nums, int val) {
+    int removeElement(std::vector<int>& nums, int val) {
         if (nums.empty()) return 0;
         int res = -1;
         for (int i = 0; i < static_cast<int>(nums.size()); i++) {
@@ -22,20 +23,20 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums = {3, 2, 2, 3};
-    vector<int> expected = {2, 2};
-    assert(s.removeElement(nums, 3) == static_cast<int>(expected.size()));
-    assert(vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
+    std::vector<int> nums = {3, 2, 2, 3};
+    std::vector<int> expected = {2, 2};
+    CHECK(s.removeElement(nums, 3) == static_cast<int>(expected.size()));
+    CHECK(std::vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
 
     nums = {0, 1, 2, 2, 3, 0, 4, 2};
     expected = {0, 1, 3, 0, 4};
-    assert(s.removeElement(nums, 2) == static_cast<int>(expected.size()));
-    assert(vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
+    CHECK(s.removeElement(nums, 2) == static_cast<int>(expected.size()));
+    CHECK(std::vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
 
     nums = {};
     expected = {};
-    assert(s.removeElement(nums, 1) == static_cast<int>(expected.size()));
-    assert(vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
+    CHECK(s.removeElement(nums, 1) == static_cast<int>(expected.size()));
+    CHECK(std::vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
 }
 
 int main() {

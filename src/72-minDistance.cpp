@@ -2,15 +2,18 @@
 // Created by 1412 on 2025/11/10.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <string>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    int minDistance(string word1, string word2) {
+    int minDistance(std::string word1, std::string word2) {
         const int m = word1.size(), n = word2.size();
-        vector<vector<int>> dp(m + 1, vector<int>(n + 1));
+        std::vector<std::vector<int>> dp(m + 1, std::vector<int>(n + 1));
         for (int i = 0; i <= m; i++) {
             dp[i][0] = i;
         }
@@ -23,7 +26,7 @@ public:
                     dp[i][j] = dp[i - 1][j - 1];
                 } else {
                     // 分别对应 替换 插入 删除
-                    dp[i][j] = min(dp[i - 1][j - 1], min(dp[i - 1][j], dp[i][j - 1])) + 1;
+                    dp[i][j] = std::min(dp[i - 1][j - 1], std::min(dp[i - 1][j], dp[i][j - 1])) + 1;
                 }
             }
         }
@@ -33,8 +36,8 @@ public:
 
 void test() {
     Solution s;
-    assert(s.minDistance("horse", "ros") == 3);
-    assert(s.minDistance("intention", "execution") == 5);
+    CHECK(s.minDistance("horse", "ros") == 3);
+    CHECK(s.minDistance("intention", "execution") == 5);
 }
 
 int main() {

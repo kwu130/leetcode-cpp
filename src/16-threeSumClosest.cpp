@@ -2,15 +2,18 @@
 // Created by 1412 on 2025/10/12.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <cstdlib>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    int threeSumClosest(vector<int>& nums, int target) {
+    int threeSumClosest(std::vector<int>& nums, int target) {
         int res = nums[0] + nums[1] + nums[2];
-        ranges::sort(nums);
+        std::ranges::sort(nums);
         const int n = static_cast<int>(nums.size());
         for (int i = 0; i < n - 2; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) {
@@ -22,7 +25,7 @@ public:
                 if (sum == target) {
                     return sum;
                 }
-                if (abs(sum - target) < abs(res - target)) {
+                if (std::abs(sum - target) < std::abs(res - target)) {
                     res = sum;
                 }
                 if (sum < target) {
@@ -39,11 +42,11 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums = {-1, 2, 1, -4};
-    assert(s.threeSumClosest(nums, 1) == 2);
+    std::vector<int> nums = {-1, 2, 1, -4};
+    CHECK(s.threeSumClosest(nums, 1) == 2);
 
     nums = {0, 0, 0};
-    assert(s.threeSumClosest(nums, 1) == 0);
+    CHECK(s.threeSumClosest(nums, 1) == 0);
 }
 
 int main() {

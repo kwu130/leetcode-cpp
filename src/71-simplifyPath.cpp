@@ -2,18 +2,21 @@
 // Created by 1412 on 2025/11/10.
 //
 
-#include <bits/stdc++.h>
+#include <sstream>
+#include <string>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    string simplifyPath(string path) {
-        string res;
-        istringstream iss(path);
-        vector<string> st;
-        string str;
-        while (getline(iss, str, '/')) {
+    std::string simplifyPath(std::string path) {
+        std::string res;
+        std::istringstream iss(path);
+        std::vector<std::string> st;
+        std::string str;
+        while (std::getline(iss, str, '/')) {
             if (str == "" || str == ".") continue;
             if (str == "..") {
                 if (!st.empty()) {
@@ -32,11 +35,11 @@ public:
 
 void test() {
     Solution s;
-    assert(s.simplifyPath("/home/") == "/home");
-    assert(s.simplifyPath("/home//foo/") == "/home/foo");
-    assert(s.simplifyPath("/home/user/Documents/../Pictures") == "/home/user/Pictures");
-    assert(s.simplifyPath("/../") == "/");
-    assert(s.simplifyPath("/.../a/../b/c/../d/./") == "/.../b/d");
+    CHECK(s.simplifyPath("/home/") == "/home");
+    CHECK(s.simplifyPath("/home//foo/") == "/home/foo");
+    CHECK(s.simplifyPath("/home/user/Documents/../Pictures") == "/home/user/Pictures");
+    CHECK(s.simplifyPath("/../") == "/");
+    CHECK(s.simplifyPath("/.../a/../b/c/../d/./") == "/.../b/d");
 }
 
 int main() {

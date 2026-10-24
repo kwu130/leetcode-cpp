@@ -2,13 +2,15 @@
 // Created by 1412 on 2025/9/26.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <string>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    int lengthOfLongestSubstring(string s) {
+    int lengthOfLongestSubstring(std::string s) {
         int chs[128] = {0};
         int res = 0;
         for (int left = 0, right = 0; right < static_cast<int>(s.size()); right++) {
@@ -19,7 +21,7 @@ public:
                 chs[lc]--;
                 left++;
             }
-            res = max(res, right - left + 1);
+            res = std::max(res, right - left + 1);
         }
         return res;
     }
@@ -27,9 +29,9 @@ public:
 
 void test() {
     Solution s;
-    assert(s.lengthOfLongestSubstring("abcabcbb") == 3);
-    assert(s.lengthOfLongestSubstring("bbbbb") == 1);
-    assert(s.lengthOfLongestSubstring("pwwkew") == 3);
+    CHECK(s.lengthOfLongestSubstring("abcabcbb") == 3);
+    CHECK(s.lengthOfLongestSubstring("bbbbb") == 1);
+    CHECK(s.lengthOfLongestSubstring("pwwkew") == 3);
 }
 
 int main() {

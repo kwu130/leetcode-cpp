@@ -2,13 +2,14 @@
 // Created by 1412 on 2025/10/17.
 //
 
-#include <bits/stdc++.h>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    int removeDuplicates(vector<int>& nums) {
+    int removeDuplicates(std::vector<int>& nums) {
         if (nums.empty()) return 0;
         int res = 0;
         for (int i = 1; i < static_cast<int>(nums.size()); i++) {
@@ -22,15 +23,15 @@ public:
 
 void test() {
     Solution s;
-    vector<int> nums = {1, 1, 2};
-    vector<int> expected = {1, 2};
-    assert(s.removeDuplicates(nums) == static_cast<int>(expected.size()));
-    assert(vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
+    std::vector<int> nums = {1, 1, 2};
+    std::vector<int> expected = {1, 2};
+    CHECK(s.removeDuplicates(nums) == static_cast<int>(expected.size()));
+    CHECK(std::vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
 
     nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
     expected = {0, 1, 2, 3, 4};
-    assert(s.removeDuplicates(nums) == static_cast<int>(expected.size()));
-    assert(vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
+    CHECK(s.removeDuplicates(nums) == static_cast<int>(expected.size()));
+    CHECK(std::vector<int>(nums.begin(), nums.begin() + expected.size()) == expected);
 }
 
 int main() {

@@ -2,14 +2,16 @@
 // Created by 1412 on 2025/10/9.
 //
 
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
 
-using namespace std;
+#include "common.h"
+
 
 class Solution {
 public:
-    string intToRoman(int num) {
-        vector<vector<string>> hash(4);
+    std::string intToRoman(int num) {
+        std::vector<std::vector<std::string>> hash(4);
         hash[0] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
         hash[1] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
         hash[2] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
@@ -20,9 +22,9 @@ public:
 
 void test() {
     Solution s;
-    assert(s.intToRoman(3749) == "MMMDCCXLIX");
-    assert(s.intToRoman(58) == "LVIII");
-    assert(s.intToRoman(1994) == "MCMXCIV");
+    CHECK(s.intToRoman(3749) == "MMMDCCXLIX");
+    CHECK(s.intToRoman(58) == "LVIII");
+    CHECK(s.intToRoman(1994) == "MCMXCIV");
 }
 
 int main() {
