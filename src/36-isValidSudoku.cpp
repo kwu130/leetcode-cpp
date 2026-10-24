@@ -6,7 +6,7 @@
 #include <unordered_set>
 #include <vector>
 
-#include "test_helper.h"
+#include "common.h"
 
 
 class Solution {

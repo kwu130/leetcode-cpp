@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <climits>
 
-#include "test_helper.h"
+#include "common.h"
 
 
 class Solution {

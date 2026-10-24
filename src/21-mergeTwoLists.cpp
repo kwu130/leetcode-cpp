@@ -3,8 +3,7 @@
 //
 
 
-#include "list_helper.h"
-#include "test_helper.h"
+#include "common.h"
 
 
 using listHelper::ListNode;

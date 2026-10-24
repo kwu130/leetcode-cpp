@@ -4,7 +4,7 @@
 
 #include <cstdlib>
 
-#include "test_helper.h"
+#include "common.h"
 
 
 class Solution {

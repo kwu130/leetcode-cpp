@@ -5,8 +5,7 @@
 
 #include <optional>
 
-#include "test_helper.h"
-#include "tree_helper.h"
+#include "common.h"
 
 
 using TreeNode = treeHelper::TreeNode;

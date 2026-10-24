@@ -5,7 +5,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "test_helper.h"
+#include "common.h"
 
 
 class Solution {

@@ -8,7 +8,7 @@
 #include <string>
 #include <utility>
 
-#include "test_helper.h"
+#include "common.h"
 
 
 class Solution {
