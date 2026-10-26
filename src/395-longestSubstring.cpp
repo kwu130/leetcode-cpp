@@ -2,7 +2,11 @@
 // Created by 1412 on 2026/10/25.
 //
 
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <string>
+#include <vector>
+
+#include "test_helper.h"
 
 using namespace std;
 
@@ -52,8 +56,8 @@ private:
 
 void test() {
     Solution s;
-    assert(s.longestSubstring("aaabb", 3) == 3);
-    assert(s.longestSubstring("ababbc", 2) == 5);
+    CHECK(s.longestSubstring("aaabb", 3) == 3);
+    CHECK(s.longestSubstring("ababbc", 2) == 5);
 }
 
 

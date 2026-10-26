@@ -2,8 +2,10 @@
 // Created by 1412 on 2026/10/24.
 //
 
-#include <bits/stdc++.h>
-#include "common.h"
+#include <string>
+#include <vector>
+
+#include "test_helper.h"
 
 using namespace std;
 
@@ -30,15 +32,15 @@ void test() {
     Solution s;
     vector<string> expected = {"1", "2", "Fizz"};
     vector<string> res = s.fizzBuzz(3);
-    assert(res == expected);
+    CHECK(res == expected);
 
     expected = {"1", "2", "Fizz", "4", "Buzz"};
     res = s.fizzBuzz(5);
-    assert(res == expected);
+    CHECK(res == expected);
 
     expected = {"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"};
     res = s.fizzBuzz(15);
-    assert(res == expected);
+    CHECK(res == expected);
 }
 
 int main() {
