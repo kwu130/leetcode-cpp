@@ -63,7 +63,7 @@ ctest --test-dir build -R '^394-decodeString$' --output-on-failure
 
 ## 持续集成
 
-GitHub Actions 会分别在 Linux/GCC Debug 和 macOS/Clang Release 环境中构建全部题目，并运行 108 个 CTest 测试。
+GitHub Actions 会分别在 Linux/GCC Debug 和 macOS/Clang Release 环境中构建全部题目，并运行所有 CTest 测试。
 
 ## 参考
 
