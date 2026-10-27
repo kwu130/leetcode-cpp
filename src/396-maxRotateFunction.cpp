@@ -2,11 +2,9 @@
 // Created by 1412 on 2026/10/26.
 //
 
-#include <algorithm>
-#include <numeric>
-#include <vector>
+#include <bits/stdc++.h>
 
-#include "test_helper.h"
+#include "common.h"
 
 using namespace std;
 

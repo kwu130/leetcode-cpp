@@ -2,10 +2,7 @@
 // Created by 1412 on 2025/11/29.
 //
 
-#include <algorithm>
-#include <stack>
-#include <utility>
-#include <optional>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

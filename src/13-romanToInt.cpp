@@ -2,8 +2,7 @@
 // Created by 1412 on 2025/10/9.
 //
 
-#include <string>
-#include <unordered_map>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

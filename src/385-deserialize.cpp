@@ -2,12 +2,7 @@
 // Created by 1412 on 2026/4/11.
 //
 
-#include <cstddef>
-#include <functional>
-#include <iostream>
-#include <stack>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

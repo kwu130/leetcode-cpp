@@ -2,9 +2,7 @@
 // Created by 1412 on 2025/11/23.
 //
 
-#include <stack>
-#include <vector>
-#include <optional>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

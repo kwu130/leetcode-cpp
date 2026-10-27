@@ -2,8 +2,7 @@
 // Created by 1412 on 2025/10/15.
 //
 
-#include <stack>
-#include <string>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

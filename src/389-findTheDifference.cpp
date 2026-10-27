@@ -2,7 +2,7 @@
 // Created by 1412 on 2025/9/22.
 //
 
-#include <string>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

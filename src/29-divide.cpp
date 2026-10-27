@@ -2,8 +2,7 @@
 // Created by 1412 on 2025/10/18.
 //
 
-#include <climits>
-#include <cstdlib>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

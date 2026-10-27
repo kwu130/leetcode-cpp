@@ -2,9 +2,7 @@
 // Created by 1412 on 2025/10/22.
 //
 
-#include <string>
-#include <unordered_set>
-#include <vector>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

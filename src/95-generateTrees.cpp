@@ -2,10 +2,7 @@
 // Created by 1412 on 2025/11/24.
 //
 
-#include <algorithm>
-#include <cstddef>
-#include <vector>
-#include <optional>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

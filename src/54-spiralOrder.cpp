@@ -2,8 +2,7 @@
 // Created by 1412 on 2025/10/31.
 //
 
-#include <climits>
-#include <vector>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

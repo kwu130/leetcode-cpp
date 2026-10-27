@@ -2,10 +2,9 @@
 // Created by 1412 on 2026/10/24.
 //
 
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 
-#include "test_helper.h"
+#include "common.h"
 
 using namespace std;
 

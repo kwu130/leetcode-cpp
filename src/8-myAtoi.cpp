@@ -2,10 +2,7 @@
 // Created by 1412 on 2025/10/5.
 //
 
-#include <cctype>
-#include <climits>
-#include <cstddef>
-#include <string>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

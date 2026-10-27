@@ -2,8 +2,7 @@
 // Created by 1412 on 2025/12/7.
 //
 
-#include <algorithm>
-#include <optional>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

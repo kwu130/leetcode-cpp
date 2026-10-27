@@ -2,9 +2,7 @@
 // Created by 1412 on 2025/12/13.
 //
 
-#include <cstddef>
-#include <queue>
-#include <vector>
+#include <bits/stdc++.h>
 
 #include "common.h"
 

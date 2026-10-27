@@ -23,7 +23,7 @@
 ## 环境要求
 
 - CMake 3.21 或更高版本
-- 支持 C++20 的 GCC 或 Clang
+- 支持 C++20 且提供 `<bits/stdc++.h>` 的编译环境（如 GCC；Clang 需确保该头文件可用）
 - Linux 或 macOS
 
 ## 构建与测试
@@ -58,7 +58,14 @@ ctest --test-dir build -R '^394-decodeString$' --output-on-failure
 
 1. 在 `src/` 中新增 `题号-题目名.cpp`。
 2. 保留题目的 `Solution` 接口，并使用 `CHECK` 编写测试。
-3. 根据实际使用引入精确的标准库头文件；链表、树或无序比较可复用 `include/` 中的辅助工具。
+3. 统一使用以下头文件引入格式；链表、树或无序比较可复用 `common.h` 提供的辅助工具：
+
+   ```cpp
+   #include <bits/stdc++.h>
+
+   #include "common.h"
+   ```
+
 4. 重新构建。CMake 会自动发现源码并创建同名可执行目标和 CTest 测试。
 
 ## 持续集成
